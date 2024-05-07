@@ -1,0 +1,92 @@
+#-------OTHER---------------------------
+# pango-list
+font=Hack Nerd Font Mono 13
+sort=+time
+# -1, all notifications
+max-visible=4
+# save to history buffer
+max-history=10
+# 0 to disabe timeout
+default-timeout=5000
+group-by=app-icon,app-name,summary,body,urgency
+# Default: <b>%s</b>\n%b Default when grouped: (%g) <b>%s</b>\n%b
+format=<b>%s</b>\n%b
+#icon-path=path[:path...]
+on-notify=exec mpv --af=volume=0.3 /usr/share/sounds/freedesktop/stereo/device-added.oga
+on-button-left=invoke-default-action
+on-button-middle=dismiss-group
+on-button-right=dismiss
+
+#-------PX------------------------------
+width=400
+# Max height
+height=150
+border-size=2
+border-radius=7
+# ls /usr/share/icons/hicolor/
+max-icon-size=48
+
+#-------COLOR---RRGGBB or RRGGBBAA---
+background-color=#131313EE
+text-color=#FFFFFF
+border-color=#0099FF
+# over | source
+progress-color=source #8866FFCC
+
+#-------POSITION------------------------
+#output=""
+# background, bottom, top, overlay
+layer=top
+# top-{right,center,left}, bottom-{right,center,left}, center-{right,left}, center
+anchor=top-right
+# left|center|right
+text-alignment=left
+# left, right, top, bottom
+icon-location=left
+
+#-------DIRECTIONAL---------------------
+# outer-margin=10
+# between notifications
+# margin=10
+padding=5,0
+
+#-------0|1-----------------------------
+icons=1
+# Pango markup
+markup=1
+# requested by applications
+actions=1
+# max-history param determines the amount
+history=1
+ignore-timeout=0
+
+#-------MODES and CRITERIAS-------------
+[mode=dnd]
+invisible=1
+on-notify=none
+
+[mode=away]
+on-notify=none
+ignore-timeout=1
+default-timeout=0
+
+#TODO no-sound
+
+[urgency=low]
+border-color=#33CC99
+
+[urgency=normal]
+border-color=#99CCFF
+
+[urgency=high]
+border-color=#FF0066
+ignore-timeout=1
+default-timeout=0
+
+
+# Directional values:
+#   A single value will apply to all four edges.
+#   Two values will set vertical and horizontal edges separately.
+#   Three will set top, horizontal, and bottom edges separately.
+#   Four will set top, right, bottom, and left edges separately. 
+#       margin = 10,20,5
