@@ -29,9 +29,17 @@
 		"custom/volume", "pulseaudio",
 		"custom/micro", "pulseaudio#microphone",
         "custom/brightness", "backlight",
+        "idle_inhibitor",
 		"custom/battery", "group/power",
 		"custom/spacing"
 	],
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󱙱",
+            "deactivated": "󰌾"
+        }
+    },
     "hyprland/submap": { 
             "tooltip": false 
         },
