@@ -1,0 +1,10 @@
+rm --trash ~/.config/nushell/history.txt
+clear
+stow .
+stow . --adopt
+ls
+cd .config/nushell/
+ls
+clear
+cd ..
+clear
