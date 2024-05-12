@@ -274,7 +274,7 @@
     },
     "custom/tablet_profiler": {
         "format": "",
-        "on-click": "~/.scipts/otd_profiler.sh"
+        "on-click": "~/.scripts/otd_profiler.sh"
     },
     "custom/wallpaper": {
         "format": "󰋫",

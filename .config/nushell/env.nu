@@ -109,6 +109,9 @@ $env.JAVA_HOME = "/usr/lib/jvm/java-17-openjdk/jre"
 
 $env.PF_INFO = "ascii title os host kernel shell de pkgs memory uptime palette" 
 
+$env.ZELLIJ_AUTO_ATTACH = true
+$env.ZELLIJ_AUTO_EXIT = true
+
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 
