@@ -29,17 +29,11 @@
 		"custom/volume", "pulseaudio",
 		"custom/micro", "pulseaudio#microphone",
         "custom/brightness", "backlight",
-        "idle_inhibitor",
+        "group/utils",
 		"custom/battery", "group/power",
 		"custom/spacing"
 	],
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "󱙱",
-            "deactivated": "󰌾"
-        }
-    },
+    
     "hyprland/submap": { 
             "tooltip": false 
         },
@@ -274,5 +268,43 @@
             "transition-left-to-right": false
         }
 
+    },
+    "custom/utils": {
+        "format": ""
+    },
+    "custom/tablet_profiler": {
+        "format": "",
+        "on-click": "~/.scipts/otd_profiler.sh"
+    },
+    "custom/wallpaper": {
+        "format": "󰋫",
+        "on-click": "waypaper"
+    },
+        "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󱙱",
+            "deactivated": "󰌾"
+        }
+    },
+    "custom/obs": {
+        "format": "󰑋",
+        "on-click": "obs-cmd replay save",
+        "on-click-right": "obs-cmd replay toggle"
+    },
+    "group/utils": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/utils",
+            "custom/obs",
+            "idle_inhibitor",
+            "custom/wallpaper",
+            "custom/tablet_profiler"
+        ],
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "utils",
+            "transition-left-to-right": false
+        }
     }
 }

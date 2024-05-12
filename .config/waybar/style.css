@@ -47,7 +47,7 @@ window#waybar {
 	color: rgb(234, 229, 225);
 }
 
-#language, #pulseaudio, #backlight, #battery, #tray, #mpris, #idle_inhibitor {
+#language, #pulseaudio, #backlight, #battery, #tray, #mpris {
 	padding: 4px 10px 0px 0px;
 	padding-top: 0px;
 	margin: 2px 4px;
@@ -168,6 +168,46 @@ button:hover {
 	border-right: 2px solid rgba(158, 148, 137, 0.7);
 }
 
+#idle_inhibitor, #custom-wallpaper, #custom-tablet_profiler, #custom-obs {
+    /* border: 1px solid yellow; */
+    border-top: none;
+    border-bottom: none;
+    padding: 0px 10px 0px 0px;
+
+}
+
+#utils {
+    padding: 0px 10px 0px 0px;
+	margin: 2px 4px;
+    
+	opacity: 1;
+
+	color: rgb(234, 229, 225);
+	border-right: 2px solid rgba(158, 148, 137, 0.13);
+
+	font-weight: 600;
+}
+
+#custom-wallpaper {
+    font-size: 22px;
+    color: green;
+}
+
+#custom-tablet_profiler {
+    font-size: 16px;
+    color: #268BD2;
+}
+
 #idle_inhibitor {
     font-size: 20px;
+    color: yellow;
+}
+
+#custom-utils:hover {
+    font-size: 20px;
+}
+
+#custom-obs {
+    color: red;
+    font-size: 24px;
 }
