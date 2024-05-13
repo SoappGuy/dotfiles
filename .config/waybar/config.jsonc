@@ -231,7 +231,7 @@
             "memory", "cpu", "disk"
         ],
         "drawer": {
-            "transition-duration": 500,
+            "transition-duration": 150,
             "children-class": "hardware",
             // "transition-left-to-right": false
         }
@@ -263,7 +263,7 @@
             "custom/shutdown"
         ],
         "drawer": {
-            "transition-duration": 500,
+            "transition-duration": 150,
             "children-class": "power",
             "transition-left-to-right": false
         }
@@ -302,7 +302,7 @@
             "custom/tablet_profiler"
         ],
         "drawer": {
-            "transition-duration": 500,
+            "transition-duration": 150,
             "children-class": "utils",
             "transition-left-to-right": false
         }
