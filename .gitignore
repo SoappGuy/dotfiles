@@ -2,4 +2,4 @@
 .config/nushell/history.txt
 .idea
 README.md
-.scripts/temp
+.scripts/temp/
