@@ -765,7 +765,7 @@ $env.config = {
 def start_zellij [] {
   if 'ZELLIJ' not-in ($env | columns) {
     if 'ZELLIJ_AUTO_ATTACH' in ($env | columns) and $env.ZELLIJ_AUTO_ATTACH == true {
-      zellij attach --create default__
+      zellij attach --create
     } else {
       zellij
     }
@@ -785,6 +785,6 @@ please
 
 alias cd = z
 alias cat = bat
-alias hypr = cd ~/.config/hypr/
 
-start_zellij
+# start_zellij
+# zellij attach --create
