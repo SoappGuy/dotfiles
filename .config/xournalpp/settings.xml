@@ -71,7 +71,7 @@
   <property name="addVerticalSpaceAmount" value="150"/>
   <property name="drawDirModsEnabled" value="false"/>
   <property name="drawDirModsRadius" value="50"/>
-  <property name="snapRotation" value="true"/>
+  <property name="snapRotation" value="false"/>
   <property name="snapRotationTolerance" value="0.3"/>
   <property name="snapGrid" value="true"/>
   <property name="snapGridTolerance" value="0.5"/>
@@ -112,7 +112,7 @@
   <property name="numIgnoredStylusEvents" value="0"/>
   <property name="inputSystemTPCButton" value="false"/>
   <property name="inputSystemDrawOutsideWindow" value="true"/>
-  <property name="preferredLocale" value="uk_UA"/>
+  <property name="preferredLocale" value=""/>
   <property name="stabilizerAveragingMethod" value="0"/>
   <property name="stabilizerPreprocessor" value="1"/>
   <property name="stabilizerBuffersize" value="5"/>
@@ -142,7 +142,9 @@
       <attribute name="tool" type="string" value="pen"/>
     </data>
     <data name="eraser">
-      <attribute name="tool" type="string" value="none"/>
+      <attribute name="eraserMode" type="string" value="none"/>
+      <attribute name="size" type="string" value="none"/>
+      <attribute name="tool" type="string" value="eraser"/>
     </data>
     <data name="middle">
       <attribute name="tool" type="string" value="hand"/>
@@ -187,7 +189,7 @@
     </data>
   </data>
   <data name="tools">
-    <attribute name="current" type="string" value="pen"/>
+    <attribute name="current" type="string" value="eraser"/>
     <data name="drawArrow">
       <attribute name="drawingType" type="string" value="default"/>
     </data>
@@ -225,7 +227,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="3333cc"/>
+      <attribute name="color" type="hex" value="ff0000"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
