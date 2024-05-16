@@ -18,6 +18,7 @@
 	],
     
 	"modules-center": [
+        "custom/protonmail", "custom/spacing",
 		"mpris", "custom/spacing",
         "clock", "custom/spacing",
         "custom/notifications"
@@ -103,9 +104,16 @@
 		"tooltip": false,
 		"format": " "
 	},
+    "custom/protonmail": {
+        "exec": "bar-protonmail -sm",
+        "return-type": "json",
+        "interval": 10,
+        "tooltip": false,
+        "on-click": "xdg-open https://mail.proton.me/u/0/inbox"
+    },
     "clock": {
         "format": "{:%H:%M}",
-        "format-alt": "{:%d %b (%m), %a}",
+        "format-alt": "{:%H:%M |%d.%m %a|}",
         // "on-click-right": "sh -c '$HOME/.config/hypr/scripts/songmenu'",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
