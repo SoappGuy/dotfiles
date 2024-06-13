@@ -161,7 +161,7 @@
             "playing": ""
         },
         "dynamic-order": ["title", "artist"],
-	    "max-length": 40
+	    "max-length": 30
     },
 	"pulseaudio": {
         "format": "{volume}%",
@@ -300,10 +300,15 @@
         "on-click": "obs-cmd replay save",
         "on-click-right": "obs-cmd replay toggle"
     },
+    "custom/xdp": {
+        "format": "󱄋",
+        "on-click": "~/dotfiles/.config/hypr/execs/xdph.sh"
+    },
     "group/utils": {
         "orientation": "horizontal",
         "modules": [
             "custom/utils",
+            "custom/xdp",
             "custom/obs",
             "idle_inhibitor",
             "custom/wallpaper",

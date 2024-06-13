@@ -216,6 +216,10 @@ button:hover {
     font-size: 24px;
 }
 
+#custom-xdp {
+    color: #B315A8;
+    font-size: 24px;
+}
 #custom-protonmail {
     padding-right: 10px;
     margin: 2px 0;
@@ -223,6 +227,10 @@ button:hover {
 	border-right: 2px solid rgba(158, 148, 137, 0.13);
 }
 
-#custom-protonmail.unread, #custom-protonmail.inaccurate, #custom-protonmail.error {
+#custom-protonmail.unread , #custom-protonmail.error {
     color: orange;
+}
+
+#custom-protonmail.inaccurate {
+    color: #3f4f50;
 }
