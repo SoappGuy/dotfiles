@@ -13,6 +13,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light sudosubin/zsh-poetry
 
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
@@ -52,6 +53,7 @@ alias ls="exa --icons"
 alias cat="bat"
 alias cp="advcp -g"
 alias mv="advmv -g"
+alias rm="trash"
 
 # Start starship prompt
 eval "$(starship init zsh)"
