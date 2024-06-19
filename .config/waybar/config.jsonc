@@ -1,40 +1,40 @@
 {
-	"layer": "bottom",
-	"position": "top",
-	"height": 32,
-	"spacing": 0,
+    "layer": "bottom",
+    "position": "top",
+    "height": 32,
+    "spacing": 0,
     "reload_style_on_change": true,
-	"tooltip": false,
+    "tooltip": false,
     "interval": 2,
-	"margin-top": 5,
-	"margin-left": 5,
-	"margin-right": 5,
+    "margin-top": 5,
+    "margin-left": 5,
+    "margin-right": 5,
 
-	"modules-left": [
-		"custom/spacing", "hyprland/workspaces",
+    "modules-left": [
+        "custom/spacing", "hyprland/workspaces",
         "group/hardware", "custom/spacing",
         "hyprland/window", "custom/spacing",
         "hyprland/submap"
-	],
-    
-	"modules-center": [
+    ],
+
+    "modules-center": [
         "custom/protonmail", "custom/spacing",
-		"mpris", "custom/spacing",
+        "mpris", "custom/spacing",
         "clock", "custom/spacing",
         "custom/notifications"
-    ], 
+    ],
 
-	"modules-right": [
-		"tray",
-		"custom/layout", "hyprland/language",
-		"custom/volume", "pulseaudio",
-		"custom/micro", "pulseaudio#microphone",
+    "modules-right": [
+        "tray",
+        "custom/layout", "hyprland/language",
+        "custom/volume", "pulseaudio",
+        "custom/micro", "pulseaudio#microphone",
         "custom/brightness", "backlight",
         "group/utils",
-		"custom/battery", "group/power",
-		"custom/spacing"
-	],
-    
+        "custom/battery", "group/power",
+        "custom/spacing"
+    ],
+
     "hyprland/submap": { 
             "tooltip": false 
         },
@@ -57,53 +57,53 @@
         "format-en": "en",
         "on-click": "hyprctl switchxkblayout 'ite-tech.-inc.-ite-device(8910)-keyboard' next && hyprctl switchxkblayout 'keychron-k6-rgb-keyboard' next"
     },
-	"custom/workspaces": {
-		"tooltip": false,
-		"format": "workspaces"
-	},
-	"custom/volume": {
-		"tooltip": false,
-		"format": "vol.",
+    "custom/workspaces": {
+        "tooltip": false,
+        "format": "workspaces"
+    },
+    "custom/volume": {
+        "tooltip": false,
+        "format": "vol.",
         "on-click-right": "pavucontrol",
         "on-click": "wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle",
         "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
-	},
-	"custom/micro": {
-		"tooltip": false,
-		"format": "mic.",
+    },
+    "custom/micro": {
+        "tooltip": false,
+        "format": "mic.",
         "on-click": "wpctl set-mute   @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-click-right": "pavucontrol",
         "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 1%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-"
-	},
-	"tray": {
+    },
+    "tray": {
         "icon-size": 20,
         "spacing": 8
     },
-	"custom/brightness": {
-		"tooltip": false,
-		"format": "brigh.",
-		"on-scroll-up": "brightnessctl s 1%+",
-		"on-scroll-down": "brightnessctl s 1%-"
-	},
-	"custom/battery": {
-		"tooltip": false,
-		"format": "bat."
-	},
-	"custom/layout": {
-		"tooltip": false,
-		"format": "",
-		"on-click": "hyprctl switchxkblayout 'ite-tech.-inc.-ite-device(8910)-keyboard' next"
-	},
-	"custom/time": {
-		"tooltip": false,
-		"format": "time"
-	},
-	"custom/spacing": {
-		"tooltip": false,
-		"format": " "
-	},
+    "custom/brightness": {
+        "tooltip": false,
+        "format": "brigh.",
+        "on-scroll-up": "brightnessctl s 1%+",
+        "on-scroll-down": "brightnessctl s 1%-"
+    },
+    "custom/battery": {
+        "tooltip": false,
+        "format": "bat."
+    },
+    "custom/layout": {
+        "tooltip": false,
+        "format": "",
+        "on-click": "hyprctl switchxkblayout 'ite-tech.-inc.-ite-device(8910)-keyboard' next"
+    },
+    "custom/time": {
+        "tooltip": false,
+        "format": "time"
+    },
+    "custom/spacing": {
+        "tooltip": false,
+        "format": " "
+    },
     "custom/protonmail": {
         "exec": "bar-protonmail -sm",
         "return-type": "json",
@@ -138,12 +138,12 @@
             "on-scroll-down": "shift_down"
         }
     },
-	"backlight": {
-		"format": "{percent}%",
-		"tooltip": false,
-		"scroll-step": 5.0
-	},
-	"battery": {
+    "backlight": {
+        "format": "{percent}%",
+        "tooltip": false,
+        "scroll-step": 5.0
+    },
+    "battery": {
         "format": "{capacity}% | {power:.1f} wt",
         "format-alt": "{capacity}% | {time}",
         "interval": 2,
@@ -152,7 +152,7 @@
             "warning": 40,
             "critical": 10
         }
-	},
+    },
     "mpris": {
         "interval": 1,
         "format": "{status_icon}{dynamic}",
@@ -161,20 +161,26 @@
             "playing": ""
         },
         "dynamic-order": ["title", "artist"],
-	    "max-length": 30
+        "max-length": 30
     },
-	"pulseaudio": {
-        "format": "{volume}%",
-        "format-bluetooth": "{volume}%",
-        "format-muted": "",
+    "pulseaudio": {
+        "format": "{icon}{volume}%",
+        "format-bluetooth": "{icon} {volume}%󰂯",
+        "format-muted": "{icon}",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "default": "󰕾",
+            "default-muted": "󰖁",
+            "headphone": "󰋋",
+            "headphone-muterd": "󰟎",
+            "speaker": "󰓃",
+            "speaker-muted": "󰓄",
+            "hdmi": "󰡁",
+            "headset": "󰋎d",
+            "headset-muted": "󰋐",
+            "hands-free": "",
+            "hands-free-muted": "",
             "phone": "",
-            "portable": "",
-            "car": "",
-            "default": [" "]
+            "phone-muted": "",
         },
         "scroll-step": 5.0,
         "on-click": "wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle",
@@ -192,7 +198,7 @@
         "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 1%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-"
     },
-	"custom/notifications": {
+    "custom/notifications": {
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
@@ -214,7 +220,7 @@
         "on-click-right": "zellij run nvtop",
         "interval": 2
     },
-    
+
     "memory": {
         "format": " {used:0.1f}G/{total:0.1f}G",
         "tooltip": true,
@@ -224,7 +230,7 @@
         "interval": 7
     },
 
-    
+
     "disk": {
         "format": " free:{free}",
         "tooltip": true,
@@ -244,7 +250,7 @@
             // "transition-left-to-right": false
         }
     },
-    
+
     "custom/shutdown": {
         "format": "shutdown〈",
         "tooltip": false,
