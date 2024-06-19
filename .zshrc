@@ -63,10 +63,12 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # Exports
+source ./credentials.zsh
 export PATH="$PATH:/home/dumbnerd/.local/bin"
 export RUSTC_WRAPPER=/home/dumbnerd/.cargo/bin/sccache
 export EDITOR=nvim
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk/jre
+export DOTNET_ROOT=$HOME/.dotnet
 
 # gpg agent
 export GPG_TTY=$(tty)
