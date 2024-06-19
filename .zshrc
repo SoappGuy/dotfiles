@@ -54,6 +54,7 @@ alias cat="bat"
 alias cp="advcp -g"
 alias mv="advmv -g"
 alias rm="trash"
+alias sync="~/.scripts/watch_sync.sh"
 
 # Start starship prompt
 eval "$(starship init zsh)"
