@@ -22,6 +22,15 @@ zinit snippet OMZP::command-not-found
 autoload -U compinit && compinit
 zinit cdreplay -q
 
+# Exports
+# source ./credentials.zsh
+export PATH="$PATH:/home/dumbnerd/.local/bin"
+export PATH="$PATH:/home/dumbnerd/.cargo/bin"
+export RUSTC_WRAPPER=/home/dumbnerd/.cargo/bin/sccache
+export EDITOR=nvim
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk/jre
+export DOTNET_ROOT=$HOME/.dotnet
+
 # Styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -48,6 +57,16 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+# functions
+function yy() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
 # aliases
 alias ls="exa --icons"
 alias cat="bat"
@@ -61,15 +80,7 @@ eval "$(starship init zsh)"
 
 # Shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-
-# Exports
-source ./credentials.zsh
-export PATH="$PATH:/home/dumbnerd/.local/bin"
-export RUSTC_WRAPPER=/home/dumbnerd/.cargo/bin/sccache
-export EDITOR=nvim
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk/jre
-export DOTNET_ROOT=$HOME/.dotnet
+eval "$(zoxide init zsh)"
 
 # gpg agent
 export GPG_TTY=$(tty)
