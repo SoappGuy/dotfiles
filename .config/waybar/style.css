@@ -1,6 +1,7 @@
 
 * {
-	font-family: Courier Prime;
+	/* font-family: Courier Prime; */
+	font-family: "Noto Sans", "Font Awesome v4 Compatibility Regular", "Ubuntu Nerd Font Propo";
 	font-size: 15px;
 	/* background-color: transparent; */
 }
@@ -181,19 +182,18 @@ button:hover {
 }
 
 #utils {
-    padding: 0px 10px 0px 0px;
-	margin: 2px 4px;
+    /* padding: 0 7px 0 3px; */
     
-	opacity: 1;
+    opacity: 1;
 
-	color: rgb(234, 229, 225);
-	border-right: 2px solid rgba(158, 148, 137, 0.13);
+    color: rgb(234, 229, 225);
+    border-right: 2px solid rgba(158, 148, 137, 0.13);
 
-	font-weight: 600;
+    font-weight: 600;
 }
 
 #custom-wallpaper {
-    font-size: 22px;
+    font-size: 18px;
     color: green;
 }
 
@@ -207,13 +207,14 @@ button:hover {
     color: yellow;
 }
 
+/*
 #custom-utils:hover {
     font-size: 20px;
 }
-
+*/
 #custom-obs {
     color: red;
-    font-size: 24px;
+    font-size: 26px;
 }
 
 #custom-xdp {

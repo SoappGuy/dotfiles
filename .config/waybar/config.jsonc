@@ -105,7 +105,7 @@
         "format": " "
     },
     "custom/protonmail": {
-        "exec": "bar-protonmail -sm",
+        "exec": "bar-protonmail -sm -b ''",
         "return-type": "json",
         "interval": 10,
         "tooltip": false,
@@ -164,8 +164,8 @@
         "max-length": 30
     },
     "pulseaudio": {
-        "format": "{icon}{volume}%",
-        "format-bluetooth": "{icon} {volume}%󰂯",
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} 󰂯 {volume}%",
         "format-muted": "{icon}",
         "format-icons": {
             "default": "󰕾",
@@ -180,7 +180,7 @@
             "hands-free": "",
             "hands-free-muted": "",
             "phone": "",
-            "phone-muted": "",
+            "phone-muted": ""
         },
         "scroll-step": 5.0,
         "on-click": "wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle",
@@ -213,7 +213,7 @@
         "interval": 1
     },
     "cpu": {
-        "format": " {usage:02}%",
+        "format": " {usage:02}%",
         "tooltip": true,
         "on-click": "zellij run -- btop",
         "exec": "/home/dumbnerd/.scripts/stats.sh keep",
@@ -222,7 +222,7 @@
     },
 
     "memory": {
-        "format": " {used:0.1f}G/{total:0.1f}G",
+        "format": " {used:0.1f}G/{total:0.1f}G",
         "tooltip": true,
         "exec": "/home/dumbnerd/.scripts/stats.sh keep",
         "on-click": "zellij run -- btop",
@@ -254,7 +254,7 @@
     "custom/shutdown": {
         "format": "shutdown〈",
         "tooltip": false,
-        "on-click": "shutdown now"
+        "on-click": "sudo shutdown now"
     },
 
     "custom/reboot": {
@@ -284,14 +284,14 @@
 
     },
     "custom/utils": {
-        "format": ""
+        "format": " "
     },
     "custom/tablet_profiler": {
         "format": "",
         "on-click": "~/.scripts/otd_profiler.sh"
     },
     "custom/wallpaper": {
-        "format": "󰋫",
+        "format": " ",
         "on-click": "waypaper"
     },
         "idle_inhibitor": {
@@ -307,7 +307,7 @@
         "on-click-right": "obs-cmd replay toggle"
     },
     "custom/xdp": {
-        "format": "󱄋",
+        "format": "󱄋 ",
         "on-click": "~/dotfiles/.config/hypr/execs/xdph.sh"
     },
     "group/utils": {
