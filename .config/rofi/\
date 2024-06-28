@@ -1,0 +1,12 @@
+/**
+ * ROFI Color theme
+ * User: Qball
+ * Copyright: Dave Davenport
+ */
+configuration {
+	modes: [ combi ];
+	combi-modes: [ drun ];
+}
+
+@theme "dmenu_custom"
+
