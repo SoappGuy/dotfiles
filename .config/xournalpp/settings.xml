@@ -189,7 +189,7 @@
     </data>
   </data>
   <data name="tools">
-    <attribute name="current" type="string" value="selectRegion"/>
+    <attribute name="current" type="string" value="selectPdfTextLinear"/>
     <data name="drawArrow">
       <attribute name="drawingType" type="string" value="default"/>
     </data>

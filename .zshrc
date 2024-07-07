@@ -69,6 +69,7 @@ function yy() {
 
 # aliases
 alias ls="exa --icons"
+alias tree="exa --icons --tree"
 alias cat="bat"
 alias cp="advcp -g"
 alias mv="advmv -g"
