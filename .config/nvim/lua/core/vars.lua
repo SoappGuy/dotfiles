@@ -10,7 +10,7 @@ vim.opt.mouse = 'a'
 
 vim.opt.showmode = false
 
--- sync clipboard with systemone
+-- sync clipboard with system one
 vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
@@ -19,7 +19,7 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.undofile = true
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+-- case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
@@ -63,3 +63,13 @@ vim.opt.scrolloff = 10
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
+vim.o.fillchars = [[eob: ,fold: ,foldopen:󰄼,foldsep: ,foldclose:󰄾]]
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
+vim.opt.spell = true
+vim.opt.spelllang = { 'en_us', 'uk' }

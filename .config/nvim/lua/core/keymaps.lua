@@ -28,3 +28,15 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.api.nvim_create_user_command('DapSetBreakpoint', function()
+  if not package.loaded['dap'] then
+    require('lazy').load { plugins = { 'nvim-dap' } }
+    -- Any one-time setup could go here
+  end
+  require('dap').toggle_breakpoint()
+end, {})
+
+vim.keymap.set('n', '<leader>db', ':DapSetBreakpoint<CR>', { silent = true })
+
+vim.keymap.set('n', '<leader>gh', ':cd %:p:h', { desc = '[G]o [H]ere (current file dir)', silent = true })

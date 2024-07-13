@@ -15,8 +15,7 @@ cyan = "0x7dcfff"    # #7dcfff
 green = "0x9ece6a"   # #9ece6a
 magenta = "0xbb9af7" # #bb9af7
 red = "0xf7768e"     # #f7768e
-# white = "0xc0caf5"   # #ffffff
-white = "0xffffff"
+white = "0xc0caf5"   # #c0caf5
 yellow = "0xe0af68"  # #e0af68
 
 [colors.normal]

@@ -4,12 +4,8 @@ require 'core.autocmd'
 require 'core.lazy'
 
 --[[ TODO: 
---    another file tree
---    debug marks colors
---    rust
 --    harpoon
---    plugins from nvchad
---    typos cheks
+--    look at nvchad
 --]]
 
 -- The line beneath this is called `modeline`. See `:help modeline`

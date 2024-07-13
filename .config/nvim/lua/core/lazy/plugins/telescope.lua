@@ -4,7 +4,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
   branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    { -- If encountering errors, see telescope-fzf-native README for installation instructions
+    {
       'nvim-telescope/telescope-fzf-native.nvim',
 
       build = 'make',
@@ -14,26 +14,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-    {
-      'tomasky/bookmarks.nvim',
-      config = function()
-        require('bookmarks').setup {
-          -- sign_priority = 8,  --set bookmark sign priority to cover other sign
-          save_file = vim.fn.expand '$HOME/.bookmarks', -- bookmarks save file path
-          keywords = {
-            ['@t'] = '', -- mark annotation startswith @t ,signs this icon as `Todo`
-            ['@w'] = '', -- mark annotation startswith @w ,signs this icon as `Warn`
-            ['@n'] = '󰠮', -- mark annotation startswith @n ,signs this icon as `Note`
-          },
-          on_attach = function()
-            local bm = require 'bookmarks'
-            local map = vim.keymap.set
-            map('n', '<leader>bt', bm.bookmark_toggle, { desc = '[T]oggle bookmark' }) -- add or remove bookmark at current line
-            map('n', '<leader>be', bm.bookmark_ann, { desc = '[E]dit bookmark' }) -- add or edit mark annotation at current line
-          end,
-        }
-      end,
-    },
   },
   config = function()
     require('telescope').setup {
@@ -64,12 +44,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
     }
 
     -- Enable Telescope extensions if they are installed
-    pcall(require('telescope').load_extension, 'fzf')
-    pcall(require('telescope').load_extension, 'ui-select')
-    pcall(require('telescope').load_extension, 'bookmarks')
+    local telescope = require 'telescope'
+
+    pcall(telescope.load_extension, 'fzf')
+    pcall(telescope.load_extension, 'ui-select')
+    pcall(telescope.load_extension, 'bookmarks')
 
     local builtin = require 'telescope.builtin'
-    local bookmarks = require('telescope').extensions.bookmarks
 
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
@@ -82,7 +63,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-    vim.keymap.set('n', '<leader>bl', bookmarks.list, { desc = '[L]ist bookmarks' })
+    vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 
     vim.keymap.set('n', '<leader>/', function()
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {

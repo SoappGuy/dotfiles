@@ -28,7 +28,8 @@ return {
   },
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
+    lazy = true,
+    event = { 'BufReadPre', 'BufNewFile' },
     -- See `:help ibl`
     main = 'ibl',
     config = function()
@@ -36,11 +37,8 @@ return {
         scope = {
           enabled = true,
           show_start = true,
-          show_end = false,
+          show_end = true,
           highlight = hl_name_list,
-        },
-        indent = {
-          -- highlight = hl_name_list,
         },
       }
       local hooks = require 'ibl.hooks'

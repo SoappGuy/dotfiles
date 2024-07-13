@@ -4,6 +4,7 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
+  lazy = true,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
@@ -17,7 +18,7 @@ return {
     filesystem = {
       window = {
         -- position = 'current',
-        width = 50,
+        width = 35,
         mappings = {
           ['\\'] = 'close_window',
         },
