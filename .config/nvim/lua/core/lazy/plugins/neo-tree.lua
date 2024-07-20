@@ -21,6 +21,10 @@ return {
         width = 35,
         mappings = {
           ['\\'] = 'close_window',
+          ['P'] = function(state)
+            local node = state.tree:get_node()
+            require('neo-tree.ui.renderer').focus_node(state, node:get_parent_id())
+          end,
         },
       },
       close_if_last_window = true,

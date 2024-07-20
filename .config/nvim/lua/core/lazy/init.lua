@@ -9,7 +9,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   'tpope/vim-sleuth',
-
   {
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
@@ -46,6 +45,10 @@ require('lazy').setup({
 
       -- Document existing key chains
       require('which-key').add {
+        { '<leader>g', group = '[G]o' },
+        { '<leader>g_', hidden = true },
+        { '<leader>t', group = '[T]erm' },
+        { '<leader>t_', hidden = true },
         { '<leader>c', group = '[C]ode' },
         { '<leader>c_', hidden = true },
         { '<leader>d', group = '[D]ocument' },
@@ -82,6 +85,32 @@ require('lazy').setup({
       require('colorizer').setup()
     end,
   },
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = function()
+      local term = require 'toggleterm'
+      term.setup {
+        on_open = function()
+          vim.api.nvim_command ':set nospell'
+        end, -- function to run when the terminal opens
+        on_close = function()
+          vim.api.nvim_command ':set spell'
+        end, -- function to run when the terminal closes
+      }
+
+      local map = function(key, command, desc)
+        vim.keymap.set('n', key, function()
+          vim.api.nvim_command(command)
+        end, { desc = 'Term: ' .. desc })
+      end
+
+      map('<leader>ta', ':ToggleTermToggleAll', 'Term: Toggle [A]ll')
+      map('<leader>th', ':ToggleTerm direction=horizontal size=16', 'Term: Toggle [H]orizontal')
+      map('<leader>tv', ':ToggleTerm direction=vertical size=40', 'Term: Toggle [V]ertical')
+    end,
+  },
+
   { 'dstein64/vim-startuptime', lazy = false },
 
   { import = 'core.lazy.plugins' },

@@ -71,10 +71,12 @@ function yy() {
 alias ls="exa --icons"
 alias tree="exa --icons --tree"
 alias cat="bat"
+alias cd="z"
 alias cp="advcp -g"
 alias mv="advmv -g"
 alias rm="trash"
 alias sync="~/.scripts/watch_sync.sh"
+alias paru="paru --bottomup"
 
 # Start starship prompt
 eval "$(starship init zsh)"

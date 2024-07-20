@@ -10,6 +10,7 @@ return {
         markdown = { 'vale' },
         json = { 'jsonlint' },
         text = { 'vale' },
+        c = { 'cpplint' },
         -- python = { 'ruff' },
       }
 
