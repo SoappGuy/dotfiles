@@ -3,8 +3,8 @@ require 'core.keymaps'
 require 'core.autocmd'
 require 'core.lazy'
 
+vim.notify 'Loaded'
 --[[ TODO: 
---    harpoon
 --    look at nvchad
 --]]
 

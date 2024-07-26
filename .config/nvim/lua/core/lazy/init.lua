@@ -9,6 +9,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   'tpope/vim-sleuth',
+
   {
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
@@ -108,6 +109,15 @@ require('lazy').setup({
       map('<leader>ta', ':ToggleTermToggleAll', 'Term: Toggle [A]ll')
       map('<leader>th', ':ToggleTerm direction=horizontal size=16', 'Term: Toggle [H]orizontal')
       map('<leader>tv', ':ToggleTerm direction=vertical size=40', 'Term: Toggle [V]ertical')
+    end,
+  },
+
+  {
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    ft = { 'markdown' },
+    build = function()
+      vim.fn['mkdp#util#install']()
     end,
   },
 

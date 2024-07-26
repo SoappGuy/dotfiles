@@ -6,7 +6,8 @@ return {
     require('nvim-silicon').setup {
       font = 'JetBrainsMono Nerd Font=34',
       theme = 'Dracula',
-      background = '#94e295',
+      background = '#999999',
+      -- background = '#94e295',
       to_clipboard = true,
       window_title = function()
         return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), ':t')

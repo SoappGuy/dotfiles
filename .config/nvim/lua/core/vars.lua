@@ -3,6 +3,9 @@ vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
 
+-- 24-bit colors
+vim.opt.termguicolors = true
+
 vim.opt.number = true
 -- vim.opt.relativenumber = true
 
