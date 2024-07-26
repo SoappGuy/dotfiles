@@ -28,7 +28,7 @@ export PATH="$PATH:/home/dumbnerd/.local/bin"
 export PATH="$PATH:/home/dumbnerd/.cargo/bin"
 export RUSTC_WRAPPER=/home/dumbnerd/.cargo/bin/sccache
 export EDITOR=nvim
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk/jre
+# export JAVA_HOME=/usr/lib/jvm/java-17-openjdk/jre
 export DOTNET_ROOT=$HOME/.dotnet
 
 # Styling
