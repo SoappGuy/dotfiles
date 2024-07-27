@@ -61,7 +61,7 @@ window#waybar {
 }
 
 #battery.good {
-    color: green;
+    color: #9ECE6A;
 }
 
 #battery.warning:not(.charging) {
@@ -194,7 +194,7 @@ button:hover {
 
 #custom-wallpaper {
     font-size: 18px;
-    color: green;
+    color: #9ECE6A;
 }
 
 #custom-tablet_profiler {
