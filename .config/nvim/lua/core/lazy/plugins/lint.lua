@@ -5,7 +5,6 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        markdown = { 'vale' },
         json = { 'jsonlint' },
         text = { 'vale' },
         c = { 'cpplint' },
