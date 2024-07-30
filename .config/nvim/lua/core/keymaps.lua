@@ -1,5 +1,5 @@
-local map_vim_cmd = function(key, command, desc)
-  vim.keymap.set('n', key, function()
+local map_vim_cmd = function(mode, key, command, desc)
+  vim.keymap.set(mode, key, function()
     vim.api.nvim_command(command)
   end, { desc = desc })
 end
@@ -9,6 +9,7 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
 vim.keymap.set('n', '<C-s>', function()
   vim.api.nvim_command 'write'
 end, { desc = 'Save buffer' })
@@ -45,5 +46,5 @@ end, {})
 
 vim.keymap.set('n', '<leader>db', ':DapSetBreakpoint<CR>', { silent = true })
 
-map_vim_cmd('<leader>gh', ':cd %:p:h', '[G]o [H]ere (current buffer dir)')
-map_vim_cmd('<leader>gu', ':cd ..', '[G]o 1 level [U]p')
+map_vim_cmd('n', '<leader>gh', ':cd %:p:h', '[G]o [H]ere (current buffer dir)')
+map_vim_cmd('n', '<leader>gu', ':cd ..', '[G]o 1 level [U]p')
