@@ -28,7 +28,6 @@ export PATH="$PATH:/home/dumbnerd/.local/bin"
 export PATH="$PATH:/home/dumbnerd/.cargo/bin"
 export RUSTC_WRAPPER=/home/dumbnerd/.cargo/bin/sccache
 export EDITOR=nvim
-# export JAVA_HOME=/usr/lib/jvm/java-17-openjdk/jre
 export DOTNET_ROOT=$HOME/.dotnet
 
 # Styling
@@ -38,10 +37,11 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --icons -1 $realpath'
 
 # Keybinds
+autoload -U history-search-end
 bindkey -e
 bindkey '^[v' .describe-key-briefly
-bindkey '^[p' history-search-backward
-bindkey '^[n' history-search-forward
+bindkey '^[p' history-beginning-search-backward
+bindkey '^[n' history-beginning-search-forward
 bindkey "\e[1;5D" backward-word
 bindkey "\e[1;5C" forward-word
 
