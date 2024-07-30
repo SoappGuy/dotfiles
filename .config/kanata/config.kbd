@@ -1,0 +1,9 @@
+(defcfg)
+
+(defsrc
+    caps
+)
+
+(deflayer base
+    bspc
+)
