@@ -1,14 +1,14 @@
 return {
   {
     'mrcjkb/rustaceanvim',
-    version = '^4',
+    version = '^5',
     lazy = false,
   },
   {
     'saecki/crates.nvim',
     event = { 'BufRead Cargo.toml' },
     config = function()
-      require('crates').setup()
+      require('crates').setup {}
     end,
   },
 }

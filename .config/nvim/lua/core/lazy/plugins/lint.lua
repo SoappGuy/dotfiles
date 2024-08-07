@@ -6,7 +6,7 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         json = { 'jsonlint' },
-        text = { 'vale' },
+        -- text = { 'vale' },
         c = { 'cpplint' },
         -- python = { 'ruff' },
       }
