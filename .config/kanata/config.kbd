@@ -2,8 +2,10 @@
 
 (defsrc
     caps
+    home
 )
 
 (deflayer base
     bspc
+    prtsc
 )
