@@ -24,8 +24,8 @@ return { -- Highlight, edit, and navigate code
     },
   },
   build = ':TSUpdate',
-  lazy = true,
-  event = 'BufReadPre',
+  lazy = false,
+  event = 'BufRead',
   opts = {
     ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
     -- Autoinstall languages that are not installed
