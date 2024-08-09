@@ -71,7 +71,7 @@ return {
     dap.adapters.coreclr = {
       type = 'executable',
       command = '/usr/bin/netcoredbg',
-      args = { '--interpret=vscode' },
+      args = { '--interpreter=vscode' },
     }
 
     dap.configurations.cs = {
