@@ -78,3 +78,7 @@ vim.o.foldenable = true
 vim.opt.spell = true
 vim.opt.spelllang = { 'en_us', 'uk' }
 vim.opt.spelloptions = 'camel'
+
+vim.filetype.add {
+  pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
+}

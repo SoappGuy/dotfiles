@@ -25,6 +25,7 @@ return {
         'debugpy',
         'delve',
         'codelldb',
+        'netcoredbg',
       },
     }
 
@@ -65,6 +66,24 @@ return {
 
     -- Python
     require('dap-python').setup '~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
+
+    -- C#
+    dap.adapters.coreclr = {
+      type = 'executable',
+      command = '/usr/bin/netcoredbg',
+      args = { '--interpret=vscode' },
+    }
+
+    dap.configurations.cs = {
+      {
+        type = 'coreclr',
+        name = 'launch - netcoredbg',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+        end,
+      },
+    }
 
     -- LLDB (now only C)
     dap.adapters.codelldb = function(cb)
