@@ -11,22 +11,34 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   {
-    'vhyrro/luarocks.nvim',
-    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
-    config = true,
+    'hedyhli/outline.nvim',
+    lazy = true,
+    cmd = { 'Outline' },
+    keys = { -- Example mapping to toggle outline
+      { '<leader>o', '<cmd>Outline<CR>', desc = 'Toggle outline' },
+    },
+    opts = {
+      -- Your setup opts here
+    },
   },
 
   { 'rhysd/clever-f.vim' },
 
   {
     'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+    lazy = true,
+    event = 'VeryLazy',
+    -- priority = 1000, -- Make sure to load this before all the other start plugins.
+    -- init = function()
+    --   -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+    --   vim.cmd.colorscheme 'tokyonight-storm'
+    --   -- You can configure highlights by doing something like:
+    --   vim.cmd.hi 'Comment gui=none'
+    -- end,
+    config = function()
       vim.cmd.colorscheme 'tokyonight-storm'
-      -- c
-      -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
+      -- code
     end,
   },
 
@@ -78,6 +90,8 @@ require('lazy').setup({
 
   {
     'norcalli/nvim-colorizer.lua',
+    lazy = true,
+    event = 'VeryLazy',
     opts = {
       RGB = true, -- #RGB hex codes
       RRGGBB = true, -- #RRGGBB hex codes
@@ -95,33 +109,8 @@ require('lazy').setup({
     end,
   },
   {
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    config = function()
-      local term = require 'toggleterm'
-      term.setup {
-        on_open = function()
-          vim.api.nvim_command ':set nospell'
-        end, -- function to run when the terminal opens
-        on_close = function()
-          vim.api.nvim_command ':set spell'
-        end, -- function to run when the terminal closes
-      }
-
-      local map = function(key, command, desc)
-        vim.keymap.set('n', key, function()
-          vim.api.nvim_command(command)
-        end, { desc = 'Term: ' .. desc })
-      end
-
-      map('<leader>ta', ':ToggleTermToggleAll', 'Term: Toggle [A]ll')
-      map('<leader>th', ':ToggleTerm direction=horizontal size=16', 'Term: Toggle [H]orizontal')
-      map('<leader>tv', ':ToggleTerm direction=vertical size=40', 'Term: Toggle [V]ertical')
-    end,
-  },
-
-  {
     'iamcco/markdown-preview.nvim',
+    lazy = true,
     cmd = { 'MarkdownPreviewToggle' },
     ft = { 'markdown' },
     build = function()
@@ -130,6 +119,8 @@ require('lazy').setup({
   },
   {
     'fedepujol/move.nvim',
+    lazy = true,
+    event = 'BufEnter',
     config = function()
       local move = require 'move'
       move.setup {}

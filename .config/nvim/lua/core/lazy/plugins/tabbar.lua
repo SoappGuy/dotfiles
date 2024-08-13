@@ -1,5 +1,8 @@
 return {
   'romgrk/barbar.nvim',
+  lazy = true,
+  event = 'VeryLazy',
+  version = '^1.0.0', -- optional: only update when a new 1.x version is released
   dependencies = {
     'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
@@ -28,5 +31,4 @@ return {
     maximum_padding = 1,
     minimum_padding = 1,
   },
-  version = '^1.0.0', -- optional: only update when a new 1.x version is released
 }

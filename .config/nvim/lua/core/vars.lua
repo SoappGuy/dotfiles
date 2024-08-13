@@ -10,7 +10,6 @@ vim.opt.number = true
 -- vim.opt.relativenumber = true
 
 vim.opt.mouse = 'a'
-
 vim.opt.showmode = false
 
 -- sync clipboard with system one
@@ -44,7 +43,11 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = {
+  tab = '» ',
+  trail = '·',
+  nbsp = '␣',
+}
 
 -- tab as spaces
 vim.opt.tabstop = 8
@@ -82,3 +85,5 @@ vim.opt.spelloptions = 'camel'
 vim.filetype.add {
   pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
 }
+
+vim.opt.colorcolumn = '81,121'
