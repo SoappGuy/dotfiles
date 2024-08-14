@@ -1,5 +1,5 @@
-import sys
 import subprocess
+import sys
 
 with open("/home/dumbnerd/.scripts/temp/mouse_scale_factor", "r") as file:
     state = float(file.read().strip())
@@ -20,5 +20,5 @@ result = subprocess.run(["hyprctl", "keyword", "misc:cursor_zoom_factor", str(st
                         check=True, text=True, capture_output=True)
 
 if result.stdout != "ok":
-    subprocess.run(["hyprctl", "hyprctl",  "notify",  "-1",  "1000", "rgb(0ff00)",
+    subprocess.run(["hyprctl",  "notify",  "-1",  "1000", "rgb(0ff00)",
                     result.stdout], check=True, text=True, capture_output=True)
