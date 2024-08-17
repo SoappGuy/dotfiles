@@ -41,7 +41,12 @@
     "hyprland/window": {
         "format": "{}",
         "separate-outputs": true,
-        "max-length": 40
+        "max-length": 40,
+        "icon": true,
+        "icon-size": 20,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "Firefox", // ShyFox fucked up
+        }
     },
     "hyprland/workspaces": {
         "format": "{name}",
