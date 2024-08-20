@@ -9,7 +9,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   'tpope/vim-sleuth',
-
   {
     'hedyhli/outline.nvim',
     lazy = true,

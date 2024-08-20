@@ -6,7 +6,7 @@ return {
     dependencies = {
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      { 'WhoIsSethDaniel/mason-tool-installer.nvim', opt = {} },
       { 'j-hui/fidget.nvim', opts = {} },
 
       { 'folke/neodev.nvim', opts = {} },
@@ -116,6 +116,18 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         hyprls = {},
+        cssls = {},
+        html = {},
+        -- emmet_ls = {
+        --   filetypes = { 'css', 'eruby', 'html', 'javascript', 'javascriptreact', 'less', 'sass', 'scss', 'svelte', 'pug', 'typescriptreact', 'vue' },
+        --   init_options = {
+        --     html = {
+        --       options = {
+        --         -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+        --       },
+        --     },
+        --   },
+        -- },
         clangd = {},
         -- gopls = {},
         ruff_lsp = {},
@@ -184,21 +196,22 @@ return {
             lspconfig[server_name].setup(server)
           end,
           rust_analyzer = function() end,
-          ltex = function()
-            require('lspconfig').ltex.setup {
-              capabilities = capabilities,
-              settings = {
-                ltex = {
-                  filetypes = { 'markdown', 'text' },
-                  flags = { debounce_text_changes = 300 },
-                  language = 'en-US',
-                },
-              },
-              on_attach = function(client, bufnr)
-                require('ltex-utils').on_attach(bufnr)
-              end,
-            }
-          end,
+          ltex = function() end,
+          -- ltex = function()
+          --   require('lspconfig').ltex.setup {
+          --     capabilities = capabilities,
+          --     settings = {
+          --       ltex = {
+          --         filetypes = { 'markdown', 'text' },
+          --         flags = { debounce_text_changes = 300 },
+          --         language = 'en-US',
+          --       },
+          --     },
+          --     on_attach = function(client, bufnr)
+          --       require('ltex-utils').on_attach(bufnr)
+          --     end,
+          --   }
+          -- end,
         },
       }
     end,
