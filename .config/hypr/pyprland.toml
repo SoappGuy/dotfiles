@@ -1,0 +1,22 @@
+[pyprland]
+    plugins = ["scratchpads", "toggle_special"]
+
+[scratchpads]
+[scratchpads.telegram]
+    command = "64gram-desktop"
+    class = "io.github.tdesktop_x64.TDesktop"
+    size = "80% 85%"
+    animation = "fromBottom"
+    multi = false
+    unfocus = "hide"
+    hysteresis = 0.1
+    hide_delay = 0.1
+
+[scratchpads.tops]
+    command = "kitty --class tops --session tops.conf"
+    lazy = true
+    class = "tops"
+    margin = 10
+    size = "98% 98%"
+    animation = "fromBottom"
+    hide_delay = 0.1
