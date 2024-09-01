@@ -20,3 +20,12 @@
     size = "98% 98%"
     animation = "fromBottom"
     hide_delay = 0.1
+
+[scratchpads.bitwarden]
+    command = "bitwarden-desktop"
+    lazy = true
+    class = "Bitwarden"
+    margin = 10
+    size = "50% 98%"
+    animation = "fromleft"
+    hide_delay = 0.1
