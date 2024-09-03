@@ -1,4 +1,3 @@
-
 * {
     /* font-family: Courier Prime; */
     font-family: "Noto Sans", "Font Awesome v4 Compatibility Regular", "Ubuntu Nerd Font Propo";
@@ -16,7 +15,10 @@ window#waybar {
     transition-duration: .5s;
 }
 
-#custom-volume, #custom-brightness, #custom-battery, #custom-micro {
+#custom-volume,
+#custom-brightness,
+#custom-battery,
+#custom-micro {
     margin: 2px 10px;
     padding-top: 0px;
 
@@ -25,13 +27,23 @@ window#waybar {
     font-weight: 700;
 }
 
-#memory, #cpu, #disk {
+#memory,
+#cpu,
+#disk {
     padding-right: 4px;
     margin: 2px 4px;
 
     color: rgb(234, 229, 225);
     border-right: 2px solid rgba(158, 148, 137, 0.13);
     font-weight: 600;
+}
+
+#custom-schedule {
+    font-weight: 600;
+    margin: 2px 4px;
+    padding-left: 10px;
+    border-left: 2px solid rgba(158, 148, 137, 0.13);
+    color: yellow;
 }
 
 #submap {
@@ -49,7 +61,12 @@ window#waybar {
     font-size: 10px;
 }
 
-#language, #pulseaudio, #backlight, #battery, #tray, #mpris {
+#language,
+#pulseaudio,
+#backlight,
+#battery,
+#tray,
+#mpris {
     padding: 0px 10px 0px 0px;
     margin: 2px 4px;
 
@@ -88,9 +105,11 @@ window#waybar {
     border-left: 2px solid rgba(158, 148, 137, 0.13);
 }
 
-#custom-shutdown, #custom-reboot, #custom-logout {
+#custom-shutdown,
+#custom-reboot,
+#custom-logout {
     margin: 2px 4px;
-    
+
     color: yellow;
 
     font-weight: 600;
@@ -106,7 +125,8 @@ window#waybar {
     border-right: 2px solid rgba(158, 148, 137, 0.13);
 }
 
-#clock, #custom-notifications {
+#clock,
+#custom-notifications {
     margin: 2px 0px;
 
     font-weight: 600;
@@ -150,7 +170,7 @@ button:hover {
 #workspaces button.empty {
     font-weight: 600;
     color: rgb(234, 229, 225)
-    /* color: yellow; */
+        /* color: yellow; */
 }
 
 #custom-workspaces {
@@ -164,7 +184,7 @@ button:hover {
     color: #d4c8b2;
 }
 
-.modules-left > widget:first-child > #custom-spacing {
+.modules-left>widget:first-child>#custom-spacing {
     border-right: 2px solid rgba(158, 148, 137, 0.13);
     margin-top: 2px;
     margin-bottom: 2px;
@@ -174,7 +194,10 @@ button:hover {
     border-right: 2px solid rgba(158, 148, 137, 0.7);
 }
 
-#idle_inhibitor, #custom-wallpaper, #custom-tablet_profiler, #custom-obs {
+#idle_inhibitor,
+#custom-wallpaper,
+#custom-tablet_profiler,
+#custom-obs {
     /* border: 1px solid yellow; */
     border-top: none;
     border-bottom: none;
@@ -184,7 +207,7 @@ button:hover {
 
 #utils {
     /* padding: 0 7px 0 3px; */
-    
+
     opacity: 1;
 
     color: rgb(234, 229, 225);
@@ -222,6 +245,7 @@ button:hover {
     color: #B315A8;
     font-size: 24px;
 }
+
 #custom-protonmail {
     padding-right: 10px;
     margin: 2px 0;
@@ -229,7 +253,8 @@ button:hover {
     border-right: 2px solid rgba(158, 148, 137, 0.13);
 }
 
-#custom-protonmail.unread , #custom-protonmail.error {
+#custom-protonmail.unread,
+#custom-protonmail.error {
     color: orange;
 }
 
