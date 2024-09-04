@@ -115,21 +115,9 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        hyprls = {},
         cssls = {},
         html = {},
-        -- emmet_ls = {
-        --   filetypes = { 'css', 'eruby', 'html', 'javascript', 'javascriptreact', 'less', 'sass', 'scss', 'svelte', 'pug', 'typescriptreact', 'vue' },
-        --   init_options = {
-        --     html = {
-        --       options = {
-        --         -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-        --       },
-        --     },
-        --   },
-        -- },
         clangd = {},
-        -- gopls = {},
         ruff_lsp = {},
         omnisharp = {},
         rust_analyzer = {
@@ -163,6 +151,7 @@ return {
             },
           },
         },
+        hyprls = {},
       }
 
       -- Ensure the servers and tools above are installed

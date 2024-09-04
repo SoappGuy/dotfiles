@@ -21,10 +21,28 @@ return {
         width = 35,
         mappings = {
           ['\\'] = 'close_window',
-          ['P'] = function(state)
-            local node = state.tree:get_node()
-            require('neo-tree.ui.renderer').focus_node(state, node:get_parent_id())
-          end,
+          ['P'] = {
+            function(state)
+              local node = state.tree:get_node()
+              require('neo-tree.ui.renderer').focus_node(state, node:get_parent_id())
+            end,
+            desc = 'go to parent node',
+          },
+          ['O'] = {
+            function(state)
+              local node = state.tree:get_node()
+
+              vim.notify 'Opening file'
+
+              vim.fn.jobstart("xdg-open '" .. node.path .. "'", {
+                cwd = vim.fn.getcwd(),
+                on_exit = function(jobid, data, event)
+                  vim.notify 'Task finished'
+                end,
+              })
+            end,
+            desc = 'open using system default app',
+          },
         },
       },
       close_if_last_window = true,

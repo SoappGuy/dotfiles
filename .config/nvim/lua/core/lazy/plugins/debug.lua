@@ -154,7 +154,7 @@ return {
     end
 
     -- Auto toggle UI
-    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
+    -- dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = exit_and_delete_bin
     dap.listeners.before.event_exited['dapui_config'] = exit_and_delete_bin
   end,
