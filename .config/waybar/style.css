@@ -1,83 +1,105 @@
 * {
-    /* font-family: Courier Prime; */
+    transition: none;
+    box-shadow: none;
+}
+
+#waybar {
     font-family: "Noto Sans", "Font Awesome v4 Compatibility Regular", "Ubuntu Nerd Font Propo";
-    font-size: 15px;
-    /* background-color: transparent; */
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #b8b8b8;
+    background: #2b2e37;
 }
 
-window#waybar {
-    border: 2px solid rgba(158, 148, 137, 0.13);
-    border-radius: 6px;
-
-    background-color: rgba(12, 12, 9, 0.3);
-
-    transition-property: background-color;
-    transition-duration: .5s;
+#workspaces {
+    margin: 0 4px;
 }
 
-#custom-volume,
-#custom-brightness,
-#custom-battery,
-#custom-micro {
-    margin: 2px 10px;
-    padding-top: 0px;
-
-    color: rgb(212, 200, 178);
-
-    font-weight: 700;
+#workspaces button {
+    font-weight: 600;
+    margin: 4px 0;
+    padding: 0 4px;
+    color: #86c1b9;
 }
 
-#memory,
+#workspaces button.active {
+    border-radius: 4px;
+    background-color: #3b3e47;
+}
+
+#workspaces button.urgent {
+    color: rgba(238, 46, 36, 1);
+}
+
+#workspaces button.empty {
+    color: #d8d8d8;
+    font-weight: 300;
+}
+
+#tray {
+    margin: 4px 4px 4px 4px;
+    border-radius: 4px;
+    background-color: #3b3e47;
+}
+
+#tray .active,
+#tray .active>* {
+    padding: 0 6px;
+    border-left: 1px solid #181818;
+}
+
+#tray .active:first-child,
+#tray .active>*:first-child {
+    border-left: none;
+}
+
+#mode,
+#battery,
 #cpu,
-#disk {
-    padding-right: 4px;
-    margin: 2px 4px;
-
-    color: rgb(234, 229, 225);
-    border-right: 2px solid rgba(158, 148, 137, 0.13);
-    font-weight: 600;
+#memory,
+#network,
+#pulseaudio,
+#custom-tablet_profiler,
+#custom-xdp,
+#idle_inhibitor,
+#backlight,
+#custom-storage,
+#custom-updates,
+#custom-weather,
+#custom-mail,
+#clock,
+#temperature,
+#custom-notifications,
+#language {
+    margin: 4px 2px;
+    padding: 0 6px;
+    background-color: #3b3e47;
+    border-radius: 4px;
+    min-width: 20px;
 }
 
-#custom-schedule {
-    font-weight: 600;
-    margin: 2px 4px;
-    padding-left: 10px;
-    border-left: 2px solid rgba(158, 148, 137, 0.13);
-    color: yellow;
+#pulseaudio.muted {
+    color: #a16946;
 }
 
-#submap {
-    font-weight: 600;
-    margin: 2px 4px;
-    padding-left: 10px;
-    border-left: 2px solid rgba(158, 148, 137, 0.13);
-    color: red;
+#clock {
+    margin-left: 0px;
+    margin-right: 4px;
+    background-color: transparent;
 }
 
 #window {
-    font-weight: 600;
-    margin: 2px 4px;
-    color: rgb(234, 229, 225);
-    font-size: 10px;
+    font-size: 0.9em;
+    font-weight: 400;
 }
 
-#language,
-#pulseaudio,
-#backlight,
-#battery,
-#tray,
-#mpris {
-    padding: 0px 10px 0px 0px;
-    margin: 2px 4px;
-
-    opacity: 1;
-
-    color: rgb(234, 229, 225);
-    border-right: 2px solid rgba(158, 148, 137, 0.13);
-
-    font-weight: 600;
+#language {
+    font-size: 0.9em;
+    font-weight: 500;
+    letter-spacing: -1px;
 }
 
+#battery.charging,
 #battery.good {
     color: #9ECE6A;
 }
@@ -100,164 +122,14 @@ window#waybar {
     }
 }
 
-#tray {
-    padding-left: 10px;
-    border-left: 2px solid rgba(158, 148, 137, 0.13);
-}
-
-#custom-shutdown,
-#custom-reboot,
-#custom-logout {
-    margin: 2px 4px;
-
-    color: yellow;
-
-    font-weight: 600;
-}
-
-#power:hover {
+#submap {
     color: red;
 }
 
-#custom-reboot {
-    padding: 0px 10px;
-    border-left: 2px solid rgba(158, 148, 137, 0.13);
-    border-right: 2px solid rgba(158, 148, 137, 0.13);
+#custom-schedule {
+    color: #86c1b9;
 }
 
-#clock,
-#custom-notifications {
-    margin: 2px 0px;
-
-    font-weight: 600;
-}
-
-button {
-    box-shadow: inset 0 -6px transparent;
-    box-shadow: rgba(158, 148, 137, 0.13) 2px 0;
-    border: none;
-    border-radius: 0px;
-}
-
-button:hover {
-    background: inherit;
-}
-
-
-#workspaces button {
-    padding: 0 6px;
-    padding-top: 4px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    margin-right: 2px;
-    margin-left: 0px;
-    font-weight: 900;
-    /* color: rgb(234, 229, 225); */
-    color: yellow;
-    transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.68);
-}
-
-#workspaces button:hover {
-    background-color: rgba(84, 84, 82, 0.3);
-    transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.68);
-}
-
-#workspaces button.active {
-    background-color: rgba(157, 157, 156, 0.3);
-    transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.68);
-}
-
-#workspaces button.empty {
-    font-weight: 600;
-    color: rgb(234, 229, 225)
-        /* color: yellow; */
-}
-
-#custom-workspaces {
-    border-right: 2px solid rgba(158, 148, 137, 0.13);
-    margin-top: 2px;
-    margin-bottom: 2px;
-    padding-top: 5px;
-    margin-left: 10px;
-    margin-right: 0px;
-    padding-right: 10px;
-    color: #d4c8b2;
-}
-
-.modules-left>widget:first-child>#custom-spacing {
-    border-right: 2px solid rgba(158, 148, 137, 0.13);
-    margin-top: 2px;
-    margin-bottom: 2px;
-}
-
-#wireplumber {
-    border-right: 2px solid rgba(158, 148, 137, 0.7);
-}
-
-#idle_inhibitor,
-#custom-wallpaper,
-#custom-tablet_profiler,
-#custom-obs {
-    /* border: 1px solid yellow; */
-    border-top: none;
-    border-bottom: none;
-    padding: 0px 10px 0px 0px;
-
-}
-
-#utils {
-    /* padding: 0 7px 0 3px; */
-
-    opacity: 1;
-
-    color: rgb(234, 229, 225);
-    border-right: 2px solid rgba(158, 148, 137, 0.13);
-
-    font-weight: 600;
-}
-
-#custom-wallpaper {
-    font-size: 18px;
-    color: #9ECE6A;
-}
-
-#custom-tablet_profiler {
-    font-size: 16px;
-    color: #268BD2;
-}
-
-#idle_inhibitor {
-    font-size: 20px;
-    color: yellow;
-}
-
-/*
-#custom-utils:hover {
-    font-size: 20px;
-}
-*/
-#custom-obs {
-    color: red;
-    font-size: 26px;
-}
-
-#custom-xdp {
-    color: #B315A8;
-    font-size: 24px;
-}
-
-#custom-protonmail {
-    padding-right: 10px;
-    margin: 2px 0;
-    color: rgb(234, 229, 225);
-    border-right: 2px solid rgba(158, 148, 137, 0.13);
-}
-
-#custom-protonmail.unread,
-#custom-protonmail.error {
-    color: orange;
-}
-
-#custom-protonmail.inaccurate {
-    color: #3f4f50;
+#mpris {
+    color: #86c1b9;
 }

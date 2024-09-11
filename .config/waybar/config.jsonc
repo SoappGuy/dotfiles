@@ -1,43 +1,40 @@
 {
-    "layer": "bottom",
-    "position": "top",
-    "height": 32,
-    "spacing": 0,
-    "reload_style_on_change": true,
-    "tooltip": false,
-    "interval": 2,
-    "margin-top": 5,
-    "margin-left": 5,
-    "margin-right": 5,
-
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 34, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
     "modules-left": [
-        "custom/spacing", "hyprland/workspaces",
-        "group/hardware", "custom/spacing",
-        "hyprland/window", "custom/spacing",
-        "custom/schedule" , "custom/spacing",
-        "hyprland/submap"
+        "hyprland/workspaces", 
+        "idle_inhibitor",
+        "custom/tablet_profiler",
+        "custom/xdp",
+        "pulseaudio", 
+        "pulseaudio#microphone",
+        "backlight", 
+        "custom/updates",
+        "mpris"
     ],
-
     "modules-center": [
-        "custom/protonmail", "custom/spacing",
-        "mpris", "custom/spacing",
-        "clock", "custom/spacing",
-        "custom/notifications"
+        "hyprland/window",
     ],
-
     "modules-right": [
-        "tray",
-        "custom/layout", "hyprland/language",
-        "custom/volume", "pulseaudio",
-        "custom/micro", "pulseaudio#microphone",
-        "custom/brightness", "backlight",
-        "group/utils",
-        "custom/battery", "group/power",
-        "custom/spacing"
+        "custom/schedule",
+        "hyprland/submap",
+        "tray", 
+        "hyprland/language",
+        "custom/notifications",
+        "memory", 
+        "battery", 
+        "clock"
     ],
 
-    "hyprland/submap": { 
-            "tooltip": false 
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "disable-scroll": true,
+        "all-outputs": true,
     },
     "hyprland/window": {
         "format": "{}",
@@ -49,91 +46,30 @@
             "(.*) — Mozilla Firefox": "Firefox", // ShyFox fucked up
         }
     },
-    "hyprland/workspaces": {
-        "format": "{name}",
-        "on-click": "activate",
-        "all-outputs": true,
-        "sort-by-number": true,
-        "on-scroll-up": "hyprctl dispatch workspace e+1",
-        "on-scroll-down": "hyprctl dispatch workspace e-1"
-    },
     "hyprland/language": {
         "format": "{}",
-        "format-uk": "ua",
-        "format-en": "en",
-        "on-click": "hyprctl switchxkblayout 'ite-tech.-inc.-ite-device(8910)-keyboard' next && hyprctl switchxkblayout 'keychron-k6-rgb-keyboard' next"
+        "format-uk": "Ua",
+        "format-en": "En",
+        "on-click": "hyprctl switchxkblayout 'ite-tech.-inc.-ite-device(8910)-keyboard' next && hyprctl switchxkblayout 'keychron-k6-rgb-keyboard' next",
+        "max-length": 5,
     },
-    "custom/schedule": {
-        "return-type": "json",
-        "exec": "~/.scripts/schedule.sh",
-        "interval": 30,
-        "tooltip": true,
-        "format": "{}",
-    },
-    "custom/workspaces": {
-        "tooltip": false,
-        "format": "workspaces"
-    },
-    "custom/volume": {
-        "tooltip": false,
-        "format": "vol.",
-        "on-click-right": "pavucontrol",
-        "on-click": "wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle",
-        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
-    },
-    "custom/micro": {
-        "tooltip": false,
-        "format": "mic.",
-        "on-click": "wpctl set-mute   @DEFAULT_AUDIO_SOURCE@ toggle",
-        "on-click-right": "pavucontrol",
-        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 1%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-"
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󱙱",
+            "deactivated": "󰌾"
+        }
     },
     "tray": {
-        "icon-size": 20,
-        "spacing": 8
-    },
-    "custom/brightness": {
-        "tooltip": false,
-        "format": "brigh.",
-        "on-scroll-up": "brightnessctl s 1%+",
-        "on-scroll-down": "brightnessctl s 1%-"
-    },
-    "custom/battery": {
-        "tooltip": false,
-        "format": "bat."
-    },
-    "custom/layout": {
-        "tooltip": false,
-        "format": "",
-        "on-click": "hyprctl switchxkblayout 'ite-tech.-inc.-ite-device(8910)-keyboard' next"
-    },
-    "custom/time": {
-        "tooltip": false,
-        "format": "time"
-    },
-    "custom/spacing": {
-        "tooltip": false,
-        "format": " "
-    },
-    "custom/protonmail": {
-        "exec": "bar-protonmail -sm -b ''",
-        "return-type": "json",
-        "interval": 10,
-        "tooltip": false,
-        "on-click": "xdg-open https://mail.proton.me/u/0/inbox"
+        // "icon-size": 21,
+        "spacing": 0
     },
     "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%H:%M |%d.%m %a|}",
-        // "on-click-right": "sh -c '$HOME/.config/hypr/scripts/songmenu'",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<tt><big>{calendar}</big></tt>",
+        "format-alt": "{:%Y-%m-%d}",
         "calendar": {
-            "mode": "year",
-            "mode-mon-col": 3,
-            "weeks-pos": "right",
-            "on-scroll": 1,
+            "mode": "month",
             "on-click-right": "mode",
             "format": {
                 "months": "<span color='#ffead3'><b>{}</b></span>",
@@ -143,38 +79,38 @@
                 "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
             }
         },
-        "actions": {
-            "on-click-right": "mode",
-            "on-click-forward": "tz_up",
-            "on-click-backward": "tz_down",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
-        }
+    },
+
+    "memory": {
+        "format": "{}% "
     },
     "backlight": {
-        "format": "{percent}%",
         "tooltip": false,
-        "scroll-step": 5.0
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
-        "format": "{capacity}% | {power:.1f} wt",
-        "format-alt": "{capacity}% | {time}",
-        "interval": 2,
+        "format": "{capacity}% {icon} {power:.1f} wt",
+        "format-alt": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% ",
         "states": {
             "good": 100,
             "warning": 40,
-            "critical": 10
-        }
-    },
-    "mpris": {
-        "interval": 1,
-        "format": "{status_icon}{dynamic}",
-        "status-icons": {
-            "paused": "⏸|",
-            "playing": ""
+            "critical": 15
         },
-        "dynamic-order": ["title", "artist"],
-        "max-length": 30
+        "format-icons": ["", "", "", "", ""],
+        "interval": 1,
+    },
+
+    "mpris": {
+        "interval": 0.5,
+        "format": "{status_icon} 󰽴 {dynamic}",
+        "status-icons": {
+            "paused": "⏸>",
+        },
+        "dynamic-order": ["title"],
+        "max-length": 20
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -204,13 +140,14 @@
     },
     "pulseaudio#microphone": {
         "format": "{format_source}",
-        "format-source": "{volume} %",
+        "format-source": " {volume} %",
         "format-source-muted": "",
         "on-click": "wpctl set-mute   @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-click-right": "pavucontrol",
         "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 1%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-"
     },
+
     "custom/notifications": {
         "tooltip": false,
         "format": "{icon}",
@@ -223,120 +160,40 @@
         "on-click": "~/.scripts/mako.sh switch",
         "on-click-right": "~/.scripts/mako.sh restore",
         "escape": true,
-        "interval": 1
+        "interval": 1,
     },
-    "cpu": {
-        "format": " {usage:02}%",
-        "tooltip": true,
-        "on-click": "zellij run -- btop",
-        "exec": "/home/dumbnerd/.scripts/stats.sh keep",
-        "on-click-right": "zellij run nvtop",
-        "interval": 2
-    },
-
-    "memory": {
-        "format": " {used:0.1f}G/{total:0.1f}G",
-        "tooltip": true,
-        "exec": "/home/dumbnerd/.scripts/stats.sh keep",
-        "on-click": "zellij run -- btop",
-        "on-click-right": "zellij run -- nvtop",
-        "interval": 7
+    "custom/updates": {
+        "format": "{} {icon}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󱍷",
+            "updated": "󰂪"
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"
     },
 
-
-    "disk": {
-        "format": " free:{free}",
-        "tooltip": true,
-        "on-click": "gnome-disks",
-        "exec": "/home/dumbnerd/.scripts/stats.sh keep",
-        "interval": 20
-    },
-
-    "group/hardware": {
-        "orientation": "horizontal",
-        "modules": [
-            "memory", "cpu", "disk"
-        ],
-        "drawer": {
-            "transition-duration": 150,
-            "children-class": "hardware",
-            // "transition-left-to-right": false
-        }
-    },
-
-    "custom/shutdown": {
-        "format": "shutdown〈",
-        "tooltip": false,
-        "on-click": "sudo shutdown now"
-    },
-
-    "custom/reboot": {
-        "format": "reboot",
-        "tooltip": false,
-        "on-click": "sudo reboot now"
-    },
-
-    "custom/logout": {
-        "format": "〉logout",
-        "tooltip": false,
-        "on-click": "hyprctl dispatch exit 1"
-    },
-    "group/power": {
-        "orientation": "horizontal",
-        "modules": [
-            "battery",
-            "custom/logout",
-            "custom/reboot",
-            "custom/shutdown"
-        ],
-        "drawer": {
-            "transition-duration": 150,
-            "children-class": "power",
-            "transition-left-to-right": false
-        }
-
-    },
-    "custom/utils": {
-        "format": " "
-    },
     "custom/tablet_profiler": {
         "format": "",
         "on-click": "~/.scripts/otd_profiler.sh"
     },
-    "custom/wallpaper": {
-        "format": " ",
-        "on-click": "waypaper"
-    },
-        "idle_inhibitor": {
+    "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
             "activated": "󱙱",
             "deactivated": "󰌾"
         }
     },
-    "custom/obs": {
-        "format": "󰑋",
-        "on-click": "obs-cmd replay save",
-        "on-click-right": "obs-cmd replay toggle"
-    },
     "custom/xdp": {
-        "format": "󱄋 ",
+        "format": "󱄋",
         "on-click": "~/dotfiles/.config/hypr/execs/xdph.sh"
     },
-    "group/utils": {
-        "orientation": "horizontal",
-        "modules": [
-            "custom/utils",
-            "custom/xdp",
-            "custom/obs",
-            "idle_inhibitor",
-            "custom/wallpaper",
-            "custom/tablet_profiler"
-        ],
-        "drawer": {
-            "transition-duration": 150,
-            "children-class": "utils",
-            "transition-left-to-right": false
-        }
-    }
+
+    "custom/schedule": {
+        "return-type": "json",
+        "exec": "~/.scripts/schedule.sh",
+        "interval": 30,
+        "tooltip": true,
+        "format": "{}",
+    },
 }
