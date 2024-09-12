@@ -1,15 +1,16 @@
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 34, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
+    "layer": "top",
+    "position": "top",
+    "height": 35,
     "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "output": ["eDP-2", "HDMI-A-1"],
+
     "modules-left": [
         "hyprland/workspaces", 
         "idle_inhibitor",
         "custom/tablet_profiler",
         "custom/xdp",
+        "custom/vnc",
         "pulseaudio", 
         "pulseaudio#microphone",
         "backlight", 
@@ -187,6 +188,10 @@
     "custom/xdp": {
         "format": "󱄋",
         "on-click": "~/dotfiles/.config/hypr/execs/xdph.sh"
+    },
+    "custom/vnc": {
+        "format": "󰦉",
+        "on-click": "~/dotfiles/.scripts/vnc.sh toggle"
     },
 
     "custom/schedule": {
