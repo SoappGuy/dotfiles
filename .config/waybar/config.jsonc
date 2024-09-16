@@ -176,7 +176,7 @@
     },
     "custom/screenrec": {
         "tooltip": false,
-        "format": "{} {icon}",
+        "format": "{}{icon}",
         "format-icons": {
             "in_progres": "󰄯",
             "none": "󱃓"
