@@ -15,7 +15,8 @@
         "pulseaudio#microphone",
         "backlight", 
         "custom/updates",
-        "mpris"
+        "mpris",
+        "custom/screenrec"
     ],
     "modules-center": [
         "hyprland/window",
@@ -172,6 +173,19 @@
         },
         "exec-if": "which waybar-module-pacman-updates",
         "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"
+    },
+    "custom/screenrec": {
+        "tooltip": false,
+        "format": "{} {icon}",
+        "format-icons": {
+            "in_progres": "󰄯",
+            "none": "󱃓"
+        },
+        "return-type": "json",
+        "exec": "~/.scripts/screenrec.sh status",
+        "on-click": "~/.scripts/screenrec.sh stop",
+        "on-click-right": "~/.scripts/screenrec.sh start",
+        "interval": 1,
     },
 
     "custom/tablet_profiler": {

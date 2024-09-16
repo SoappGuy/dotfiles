@@ -131,6 +131,10 @@
     color: #86c1b9;
 }
 
+#custom-screenrec.in_progres {
+    color: red
+}
+
 #mpris {
     color: #86c1b9;
 }
