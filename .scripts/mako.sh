@@ -18,4 +18,4 @@ elif [ "$1" == "restore" ]; then
     makoctl restore;
 fi
 
-echo "{\"text\": \"\", \"class\": \"mako\", \"alt\": \"$state\"}";
+printf '{"text": "", "class": "mako", "alt": "%s"}\n' "$state"
