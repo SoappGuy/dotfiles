@@ -30,7 +30,7 @@ stop_recordings() {
 
         if [ -n "$last_recording" ]; then
             echo "file://$last_recording" | wl-copy -t 'text/uri-list'
-        else
+        fi
     fi
 }
 
