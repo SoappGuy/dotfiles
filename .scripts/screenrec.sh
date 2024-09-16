@@ -5,8 +5,9 @@ FILENAME="$(date +'%B %d | %H:%M:%S | output.mp4')"
 START_TIME=0
 
 start_recording() {
+    GEOMETRY="$(slurp)"
     echo "$(date +%s)" > "/tmp/screenrec_start_time"
-    wf-recorder -g "$(slurp)" -f "$VIDEOS_DIR/$FILENAME" -y &
+    wf-recorder -g "$GEOMETRY" -f "$VIDEOS_DIR/$FILENAME" -y &
 }
 
 show_status() {
