@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-VIDEOS_DIR="$HOME/Videos"
-FILENAME="$(date +'%B %d | %H:%M:%S | output.mp4')"
+VIDEOS_DIR="$HOME/Videos/Screenrecs"
+FILENAME="$(date +'%B %d | %H:%M:%S.mp4')"
 START_TIME=0
 
 start_recording() {
     GEOMETRY="$(slurp)"
     echo "$(date +%s)" > "/tmp/screenrec_start_time"
-    wf-recorder -g "$GEOMETRY" -f "$VIDEOS_DIR/$FILENAME" -y &
+    wf-recorder -g "$GEOMETRY" -f "$VIDEOS_DIR/$FILENAME" -y "$@" &
 }
 
 show_status() {
@@ -25,9 +25,10 @@ show_status() {
     fi
 }
 
-stop_recordings() {
+stop_recording() {
     if pkill -x "wf-recorder"; then
         last_recording=$(ls -t "$VIDEOS_DIR"/*.mp4 | head -n1)
+        rm /tmp/screenrec_start_time
 
         if [ -n "$last_recording" ]; then
             echo "file://$last_recording" | wl-copy -t 'text/uri-list'
@@ -35,17 +36,28 @@ stop_recordings() {
     fi
 }
 
+toggle_recording() {
+    if pgrep "wf-recorder" > /dev/null; then
+        stop_recording
+    else 
+        start_recording "$@"
+    fi
+}
+
 case "$1" in
     start)
-        start_recording
+        start_recording "$@"
         ;;
     status)
         show_status
         ;;
     stop)
-        stop_recordings
+        stop_recording
+        ;;
+    toggle)
+        toggle_recording "$@"
         ;;
     *)
-        echo "Usage: $0 {start|status|stop}"
+        echo "Usage: $0 {start|status|stop|toggle}"
         ;;
 esac
