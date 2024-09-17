@@ -69,6 +69,7 @@
 #custom-weather,
 #custom-screenrec,
 #custom-mail,
+#custom-protonmail,
 #clock,
 #temperature,
 #custom-notifications,
@@ -138,4 +139,13 @@
 
 #mpris {
     color: #86c1b9;
+}
+
+#custom-protonmail.unread,
+#custom-protonmail.error {
+    color: orange;
+}
+
+#custom-protonmail.inaccurate {
+    color: #3f4f50;
 }

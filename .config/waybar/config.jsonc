@@ -3,40 +3,44 @@
     "position": "top",
     "height": 35,
     "spacing": 4, // Gaps between modules (4px)
-    "output": ["eDP-2", "HDMI-A-1"],
-
+    "output": [
+        "eDP-2",
+        "HDMI-A-1"
+    ],
+    // modules
     "modules-left": [
-        "hyprland/workspaces", 
+        "hyprland/workspaces",
         "idle_inhibitor",
         "custom/tablet_profiler",
         "custom/xdp",
         "custom/vnc",
-        "pulseaudio", 
+        "custom/screenrec",
+        "pulseaudio",
         "pulseaudio#microphone",
-        "backlight", 
+        "backlight",
         "custom/updates",
-        "mpris",
-        "custom/screenrec"
+        "custom/protonmail",
+        "mpris"
     ],
     "modules-center": [
-        "hyprland/window",
+        "hyprland/window"
     ],
     "modules-right": [
         "custom/schedule",
         "hyprland/submap",
-        "tray", 
+        "tray",
         "hyprland/language",
         "custom/notifications",
-        "memory", 
-        "battery", 
+        "memory",
+        "battery",
         "clock"
     ],
-
+    // hyprland
     "hyprland/workspaces": {
         "format": "{name}",
         "on-click": "activate",
         "disable-scroll": true,
-        "all-outputs": true,
+        "all-outputs": true
     },
     "hyprland/window": {
         "format": "{}",
@@ -45,7 +49,7 @@
         "icon": true,
         "icon-size": 20,
         "rewrite": {
-            "(.*) — Mozilla Firefox": "Firefox", // ShyFox fucked up
+            "(.*) — Mozilla Firefox": "Firefox" // ShyFox fucked up
         }
     },
     "hyprland/language": {
@@ -53,16 +57,9 @@
         "format-uk": "Ua",
         "format-en": "En",
         "on-click": "hyprctl switchxkblayout 'ite-tech.-inc.-ite-device(8910)-keyboard' next && hyprctl switchxkblayout 'keychron-k6-rgb-keyboard' next",
-        "max-length": 5,
+        "max-length": 5
     },
-
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "󱙱",
-            "deactivated": "󰌾"
-        }
-    },
+    // default
     "tray": {
         // "icon-size": 21,
         "spacing": 0
@@ -80,16 +77,25 @@
                 "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
                 "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
             }
-        },
+        }
     },
-
     "memory": {
         "format": "{}% "
     },
     "backlight": {
         "tooltip": false,
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "battery": {
         "format": "{capacity}% {icon} {power:.1f} wt",
@@ -101,17 +107,31 @@
             "warning": 40,
             "critical": 15
         },
-        "format-icons": ["", "", "", "", ""],
-        "interval": 1,
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "interval": 1
     },
-
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󱙱",
+            "deactivated": "󰌾"
+        }
+    },
     "mpris": {
         "interval": 0.5,
         "format": "{status_icon} 󰽴 {dynamic}",
         "status-icons": {
-            "paused": "⏸>",
+            "paused": "⏸>"
         },
-        "dynamic-order": ["title"],
+        "dynamic-order": [
+            "title"
+        ],
         "max-length": 20
     },
     "pulseaudio": {
@@ -149,7 +169,7 @@
         "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 1%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-"
     },
-
+    // custom complicated
     "custom/notifications": {
         "tooltip": false,
         "format": "{icon}",
@@ -162,7 +182,7 @@
         "on-click": "~/.scripts/mako.sh switch",
         "on-click-right": "~/.scripts/mako.sh restore",
         "escape": true,
-        "interval": 1,
+        "interval": 1
     },
     "custom/updates": {
         "format": "{} {icon}",
@@ -178,27 +198,28 @@
         "tooltip": false,
         "format": "{}{icon}",
         "format-icons": {
-            "in_progres": "󰄯",
-            "none": "󱃓"
+            "in_progres": "",
+            "none": ""
         },
         "return-type": "json",
         "exec": "~/.scripts/screenrec.sh status",
-        "on-click": "~/.scripts/screenrec.sh stop",
-        "on-click-right": "~/.scripts/screenrec.sh start",
-        "interval": 1,
+        "on-click": "~/.scripts/screenrec.sh toggle",
+        "on-click-right": "~/.scripts/screenrec.sh toggle -a=alsa_output.pci-0000_06_00.6.analog-stereo.monitor",
+        // to see all possible outputs use "pactl list sources | grep Name"
+        "interval": 1
     },
-
+    "custom/protonmail": {
+        "exec": "bar-protonmail -sm -b ''",
+        "return-type": "json",
+        "interval": 10,
+        "tooltip": false,
+        "on-click": "xdg-open https://mail.proton.me/u/0/inbox"
+    },
     "custom/tablet_profiler": {
         "format": "",
         "on-click": "~/.scripts/otd_profiler.sh"
     },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "󱙱",
-            "deactivated": "󰌾"
-        }
-    },
+    // custom simple
     "custom/xdp": {
         "format": "󱄋",
         "on-click": "~/dotfiles/.config/hypr/execs/xdph.sh"
@@ -207,12 +228,11 @@
         "format": "󰦉",
         "on-click": "~/dotfiles/.scripts/vnc.sh toggle"
     },
-
     "custom/schedule": {
         "return-type": "json",
         "exec": "~/.scripts/schedule.sh",
         "interval": 30,
         "tooltip": true,
-        "format": "{}",
-    },
+        "format": "{}"
+    }
 }
