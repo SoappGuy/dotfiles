@@ -4,7 +4,7 @@ return {
   cmd = 'Silicon',
   config = function()
     require('nvim-silicon').setup {
-      font = 'JetBrainsMono Nerd Font=34',
+      font = 'IosevkaTerm Nerd Font=34',
       theme = 'Dracula',
       background = '#999999',
       -- background = '#94e295',

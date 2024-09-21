@@ -71,7 +71,7 @@ require('lazy').setup({
         { '<leader>t_', hidden = true },
         { '<leader>c', group = '[C]ode' },
         { '<leader>c_', hidden = true },
-        { '<leader>d', group = '[D]ocument' },
+        { '<leader>d', group = '[D]ebug' },
         { '<leader>d_', hidden = true },
         { '<leader>h', group = '[H]arpoon' },
         { '<leader>h_', hidden = true },
@@ -122,12 +122,27 @@ require('lazy').setup({
     event = 'BufEnter',
     config = function()
       local move = require 'move'
-      move.setup {}
+      move.setup {
+        line = {
+          enable = true, -- Enables line movement
+          indent = true, -- Toggles indentation
+        },
+        block = {
+          enable = true, -- Enables block movement
+          indent = true, -- Toggles indentation
+        },
+        word = {
+          enable = true, -- Enables word movement
+        },
+        char = {
+          enable = true, -- Enables char movement
+        },
+      }
 
       local opts = { noremap = true, silent = true }
       -- Normal-mode commands
-      vim.keymap.set('n', '<A-j>', ':MoveLine(1)<CR>', opts)
       vim.keymap.set('n', '<A-k>', ':MoveLine(-1)<CR>', opts)
+      vim.keymap.set('n', '<A-j>', ':MoveLine(1)<CR>', opts)
       vim.keymap.set('n', '<A-h>', ':MoveHChar(-1)<CR>', opts)
       vim.keymap.set('n', '<A-l>', ':MoveHChar(1)<CR>', opts)
       vim.keymap.set('n', '<leader>wf', ':MoveWord(1)<CR>', opts)

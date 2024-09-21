@@ -47,4 +47,3 @@ end, {})
 vim.keymap.set('n', '<leader>db', ':DapSetBreakpoint<CR>', { silent = true })
 
 map_vim_cmd('n', '<leader>gh', ':cd %:p:h', '[G]o [H]ere (current buffer dir)')
-map_vim_cmd('n', '<leader>gu', ':cd ..', '[G]o 1 level [U]p')
