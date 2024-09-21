@@ -19,7 +19,7 @@ show_status() {
         MINUTES=$((ELAPSED_TIME / 60))
         SECONDS=$((ELAPSED_TIME % 60))
 
-        printf '{"text": "%02d:%02d", "class": "in_progres", "alt": "in_progres"}\n' "$MINUTES" "$SECONDS"
+        printf '{"text": "%02d:%02d ", "class": "in_progres", "alt": "in_progres"}\n' "$MINUTES" "$SECONDS"
     else
         printf '{"text": "", "class": "none", "alt": "none"}\n'
     fi
