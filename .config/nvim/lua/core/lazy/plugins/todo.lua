@@ -8,6 +8,6 @@ return {
     },
   },
   keys = {
-    { '<leader>bl', '<cmd>TodoTelescope<cr>', desc = 'Todo' },
+    { '<leader>tb', '<cmd>TodoTelescope<cr>', desc = 'Todo' },
   },
 }

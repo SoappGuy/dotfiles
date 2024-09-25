@@ -14,7 +14,7 @@ require('lazy').setup({
     lazy = true,
     cmd = { 'Outline' },
     keys = { -- Example mapping to toggle outline
-      { '<leader>o', '<cmd>Outline<CR>', desc = 'Toggle outline' },
+      { '<leader>to', '<cmd>Outline<CR>', desc = 'Toggle outline' },
     },
     opts = {
       -- Your setup opts here
@@ -81,8 +81,8 @@ require('lazy').setup({
         { '<leader>s_', hidden = true },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>t_', hidden = true },
-        { '<leader>w', group = '[W]orkspace' },
-        { '<leader>w_', hidden = true },
+        { '<leader>m', group = '[M]ulticursor' },
+        { '<leader>m_', hidden = true },
       }
     end,
   },
@@ -156,6 +156,7 @@ require('lazy').setup({
     end,
   },
 
+  { 'nishigori/increment-activator' },
   { 'dstein64/vim-startuptime', lazy = false },
 
   { import = 'core.lazy.plugins' },
