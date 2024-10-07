@@ -1,11 +1,8 @@
 local hl_name_list = {
-  'RainbowDelimiterRed',
-  'RainbowDelimiterYellow',
-  'RainbowDelimiterOrange',
-  'RainbowDelimiterGreen',
-  'RainbowDelimiterBlue',
-  'RainbowDelimiterCyan',
-  'RainbowDelimiterViolet',
+  'GruberDarkerRed',
+  'GruberDarkerYellow',
+  'GruberDarkerGreen',
+  'GruberDarkerNiagara',
 }
 
 return {
@@ -28,8 +25,7 @@ return {
   },
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    lazy = true,
-    event = { 'BufReadPre', 'BufNewFile' },
+    -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
     config = function()

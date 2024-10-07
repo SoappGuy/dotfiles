@@ -22,26 +22,32 @@ require('lazy').setup({
   },
 
   { 'rhysd/clever-f.vim' },
-
   {
-    'folke/tokyonight.nvim',
-    lazy = true,
-    event = 'VeryLazy',
-    -- priority = 1000, -- Make sure to load this before all the other start plugins.
-    -- init = function()
-    --   -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-    --   vim.cmd.colorscheme 'tokyonight-storm'
-    --   -- You can configure highlights by doing something like:
-    --   vim.cmd.hi 'Comment gui=none'
-    -- end,
+    'SoappGuy/gruber-darker.nvim',
+
+    priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'tokyonight-storm'
+      require('gruber-darker').setup {
+        bold = true,
+        invert = {
+          signs = true,
+          tabline = true,
+          visual = false,
+        },
+        italic = {
+          strings = false,
+          comments = false,
+          operators = false,
+          folds = false,
+        },
+        undercurl = true,
+        underline = true,
+      }
+      vim.cmd.colorscheme 'gruber-darker'
       vim.cmd.hi 'Comment gui=none'
-      -- code
     end,
   },
-
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
+  {
     'lewis6991/gitsigns.nvim',
     lazy = true,
     event = 'VeryLazy',
@@ -56,7 +62,7 @@ require('lazy').setup({
     },
   },
 
-  { -- Useful plugin to show you pending keybinds.
+  {
     'folke/which-key.nvim',
     lazy = true,
     event = 'User VeryLazy', -- Sets the loading event to 'VimEnter'
@@ -107,6 +113,7 @@ require('lazy').setup({
       require('colorizer').setup()
     end,
   },
+
   {
     'iamcco/markdown-preview.nvim',
     lazy = true,
@@ -116,6 +123,7 @@ require('lazy').setup({
       vim.fn['mkdp#util#install']()
     end,
   },
+
   {
     'fedepujol/move.nvim',
     lazy = true,
