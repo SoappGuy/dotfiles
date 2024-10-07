@@ -154,7 +154,7 @@
             "phone-muted": ""
         },
         "scroll-step": 5.0,
-        "on-click": "wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-click-right": "pavucontrol",
         "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
@@ -164,7 +164,7 @@
         "format": "{format_source}",
         "format-source": " {volume} %",
         "format-source-muted": "",
-        "on-click": "wpctl set-mute   @DEFAULT_AUDIO_SOURCE@ toggle",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-click-right": "pavucontrol",
         "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 1%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-"
@@ -203,8 +203,8 @@
         },
         "return-type": "json",
         "exec": "~/.scripts/screenrec.sh status",
-        "on-click": "~/.scripts/screenrec.sh toggle",
-        "on-click-right": "~/.scripts/screenrec.sh toggle -a=alsa_output.pci-0000_06_00.6.analog-stereo.monitor",
+        "on-click": "~/.scripts/screenrec.sh togglea",
+        "on-click-right": "~/.scripts/screenrec.sh toggle",
         // to see all possible outputs use "pactl list sources | grep Name"
         "interval": 1
     },
