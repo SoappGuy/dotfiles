@@ -43,3 +43,11 @@ vim.api.nvim_create_user_command('DapSetBreakpoint', function()
 end, {})
 
 vim.keymap.set('n', '<leader>db', ':DapSetBreakpoint<CR>', { silent = true })
+
+vim.keymap.set('n', '<leader>tl', function()
+  if next(vim.opt.colorcolumn:get()) == nil then
+    vim.opt.colorcolumn = { '81', '121' }
+  else
+    vim.opt.colorcolumn = ''
+  end
+end, { desc = 'Toggle limit lines' })

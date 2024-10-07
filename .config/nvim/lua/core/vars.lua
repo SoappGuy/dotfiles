@@ -85,5 +85,3 @@ vim.opt.spelloptions = 'camel'
 vim.filetype.add {
   pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
 }
-
-vim.opt.colorcolumn = '81,121'
