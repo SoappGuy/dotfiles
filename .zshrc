@@ -30,11 +30,12 @@ zinit cdreplay -q
 
 # Exports
 # source ./credentials.zsh
-export PATH="$PATH:/home/dumbnerd/.local/bin"
-export PATH="$PATH:/home/dumbnerd/.cargo/bin"
-export RUSTC_WRAPPER=/home/dumbnerd/.cargo/bin/sccache
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/go/bin"
+export RUSTC_WRAPPER="$HOME/.cargo/bin/sccache"
 export EDITOR=nvim
-export DOTNET_ROOT=$HOME/.dotnet
+export DOTNET_ROOT="$HOME/.dotnet"
 
 # Styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
