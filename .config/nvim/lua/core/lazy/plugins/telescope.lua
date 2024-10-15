@@ -46,6 +46,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Enable Telescope extensions if they are installed
     local telescope = require 'telescope'
 
+    local action_state = require 'telescope.actions.state'
+    local actions = require 'telescope.actions'
+
     pcall(telescope.load_extension, 'fzf')
     pcall(telescope.load_extension, 'ui-select')
     pcall(telescope.load_extension, 'bookmarks')
@@ -60,7 +63,23 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-    vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+    vim.keymap.set('n', '<leader><leader>', function()
+      builtin.buffers {
+        attach_mappings = function(prompt_bufnr, map)
+          local delete_buf = function()
+            local selection = action_state.get_selected_entry()
+            actions.close(prompt_bufnr)
+            vim.api.nvim_buf_delete(selection.bufnr, { force = true })
+            -- vim.api.nvim_buf_delete(selection.bufnr)
+          end
+
+          map('i', '<c-d>', delete_buf)
+          map('n', '<d>', delete_buf)
+
+          return true
+        end,
+      }
+    end, { desc = '[ ] Find existing buffers' })
 
     vim.keymap.set('n', '<leader>/', function()
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {

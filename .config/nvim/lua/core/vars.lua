@@ -85,3 +85,7 @@ vim.opt.spelloptions = 'camel'
 vim.filetype.add {
   pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
 }
+
+vim.filetype.add {
+  extension = { gotmpl = 'gotmpl' },
+}

@@ -27,6 +27,27 @@ return { -- Autocompletion
     'hrsh7th/cmp-nvim-lsp-signature-help',
     'hrsh7th/cmp-path',
     'f3fora/cmp-spell',
+
+    {
+      'Jezda1337/nvim-html-css',
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter',
+        'nvim-lua/plenary.nvim',
+      },
+      opt = {},
+      option = {
+        enable_on = {
+          'html',
+          'css',
+          'gotmpl',
+        },
+        file_extensions = { 'css', 'sass', 'less', 'html', 'gotmpl' }, -- set the local filetypes from which you want to derive classes
+        style_sheets = {
+          -- example of remote styles, only css no js for now
+          'https://cdn.jsdelivr.net/npm/beercss@3.7.10/dist/cdn/beer.min.css',
+        },
+      },
+    },
   },
   config = function()
     -- See `:help cmp`
@@ -98,6 +119,7 @@ return { -- Autocompletion
         { name = 'nvim_lsp_signature_help' },
         { name = 'buffer' },
         { name = 'luasnip' },
+        { name = 'html-css' },
         { name = 'path' },
         -- {
         --   name = 'spell',
@@ -126,8 +148,13 @@ return { -- Autocompletion
         format = function(entry, vim_item)
           local kind = lspkind.cmp_format { mode = 'symbol', maxwidth = 50 }(entry, vim_item)
 
+          if entry.source.name == 'html-css' then
+            kind.menu = entry.completion_item.menu
+          else
+            kind.menu = ''
+          end
+
           kind.kind = ' ' .. kind.kind .. ' '
-          kind.menu = ''
 
           return kind
         end,
