@@ -47,9 +47,10 @@
         "separate-outputs": true,
         "max-length": 40,
         "icon": true,
-        "icon-size": 20,
+        // "icon-size": 20,
+        "icon-size": 36,
         "rewrite": {
-            "(.*) — Mozilla Firefox": "Firefox" // ShyFox fucked up
+            "(.*)Mozilla Firefox": "Mozzarella Firefox" // ShyFox fucked up
         }
     },
     "hyprland/language": {
@@ -65,6 +66,8 @@
         "spacing": 0
     },
     "clock": {
+        "format": "{:%H:%M:%S}",
+        "interval": 1,
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
         "format-alt": "{:%Y-%m-%d}",
         "calendar": {
