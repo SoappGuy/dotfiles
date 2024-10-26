@@ -84,6 +84,7 @@ alias mv="advmv -g"
 alias rm="trash"
 alias sync="~/.scripts/watch_sync.sh"
 alias paru="paru --bottomup"
+alias s="kitten ssh"
 
 # Start starship prompt
 eval "$(starship init zsh)"
