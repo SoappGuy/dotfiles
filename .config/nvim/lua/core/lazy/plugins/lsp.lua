@@ -4,13 +4,15 @@ return {
     lazy = true,
     event = 'BufReadPre',
     dependencies = {
-      { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+      { 'williamboman/mason.nvim', config = true },
+
       'williamboman/mason-lspconfig.nvim',
       { 'WhoIsSethDaniel/mason-tool-installer.nvim', opt = {} },
       { 'j-hui/fidget.nvim', opts = {} },
 
       { 'folke/neodev.nvim', opts = {} },
       { 'jhofscheier/ltex-utils.nvim', opt = {} },
+      { 'nanotee/sqls.nvim', opt = {} },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -117,6 +119,7 @@ return {
       local servers = {
         htmx = {},
         gopls = {},
+        hyprls = {},
         bashls = {},
         jsonls = {},
         cssls = {},
@@ -124,6 +127,21 @@ return {
         clangd = {},
         ruff_lsp = {},
         omnisharp = {},
+        sqls = {
+          on_attach = function(client, bufnr)
+            require('sqls').on_attach(client, bufnr)
+          end,
+          settings = {
+            sqls = {
+              connections = {
+                {
+                  driver = 'mysql',
+                  dataSourceName = 'root:password@tcp(127.0.0.1:3306)/class_manager',
+                },
+              },
+            },
+          },
+        },
         rust_analyzer = {
           settings = {
             ['rust-analyzer'] = {
@@ -155,7 +173,6 @@ return {
             },
           },
         },
-        hyprls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -191,7 +208,7 @@ return {
           rust_analyzer = function() end,
           ltex = function() end,
           -- ltex = function()
-          --   require('lspconfig').ltex.setup {
+          --   lspconfig.ltex.setup {
           --     capabilities = capabilities,
           --     settings = {
           --       ltex = {
