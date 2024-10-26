@@ -1,9 +1,3 @@
-local map_vim_cmd = function(mode, key, command, desc)
-  vim.keymap.set(mode, key, function()
-    vim.api.nvim_command(command)
-  end, { desc = desc })
-end
-
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })

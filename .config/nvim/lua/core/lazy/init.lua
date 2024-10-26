@@ -8,7 +8,6 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  'tpope/vim-sleuth',
   {
     'hedyhli/outline.nvim',
     lazy = true,
@@ -21,7 +20,6 @@ require('lazy').setup({
     },
   },
 
-  { 'rhysd/clever-f.vim' },
   {
     'SoappGuy/gruber-darker.nvim',
 
@@ -47,19 +45,28 @@ require('lazy').setup({
       vim.cmd.hi 'Comment gui=none'
     end,
   },
+
   {
     'lewis6991/gitsigns.nvim',
     lazy = true,
     event = 'VeryLazy',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
+    config = function()
+      local gitsigns = require 'gitsigns'
+
+      gitsigns.setup {
+        signs = {
+          add = { text = '+' },
+          change = { text = '~' },
+          delete = { text = '_' },
+          topdelete = { text = '‾' },
+          changedelete = { text = '~' },
+        },
+      }
+
+      vim.keymap.set({ 'v' }, '<leader>gh', function()
+        gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+      end, { desc = 'Gitsigns: Stage selected hunk(s)' })
+    end,
   },
 
   {
@@ -94,7 +101,7 @@ require('lazy').setup({
   },
 
   {
-    'norcalli/nvim-colorizer.lua',
+    'NvChad/nvim-colorizer.lua',
     lazy = true,
     event = 'VeryLazy',
     opts = {
@@ -106,11 +113,11 @@ require('lazy').setup({
       hsl_fn = true, -- CSS hsl() and hsla() functions
       css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
       css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-      -- Available modes: foreground, background
-      mode = 'background',
-    }, -- Set the display mode.},
+      -- Available modes: foreground, background, virtual
+      mode = 'virtualtext',
+    },
     config = function()
-      require('colorizer').setup()
+      require('colorizer').setup {}
     end,
   },
 
@@ -164,6 +171,9 @@ require('lazy').setup({
     end,
   },
 
+  { 'github/copilot.vim' },
+  { 'tpope/vim-sleuth' },
+  { 'rhysd/clever-f.vim' },
   { 'nishigori/increment-activator' },
   { 'dstein64/vim-startuptime', lazy = false },
 
