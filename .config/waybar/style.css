@@ -70,6 +70,12 @@
 #custom-screenrec,
 #custom-mail,
 #custom-protonmail,
+#custom-scripts_icon,
+#custom-power_icon,
+#custom-shutdown,
+#custom-reboot,
+#custom-suspend,
+#custom-lock,
 #clock,
 #temperature,
 #custom-notifications,
@@ -147,5 +153,5 @@
 }
 
 #custom-protonmail.inaccurate {
-    color: #3f4f50;
+    color: #86c1b9;
 }

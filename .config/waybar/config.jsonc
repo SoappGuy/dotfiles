@@ -10,11 +10,7 @@
     // modules
     "modules-left": [
         "hyprland/workspaces",
-        "idle_inhibitor",
-        "custom/tablet_profiler",
-        "custom/xdp",
-        "custom/vnc",
-        "custom/screenrec",
+        "group/scripts",
         "pulseaudio",
         "pulseaudio#microphone",
         "backlight",
@@ -33,6 +29,7 @@
         "custom/notifications",
         "memory",
         "battery",
+        "group/power",
         "clock"
     ],
     // hyprland
@@ -47,7 +44,6 @@
         "separate-outputs": true,
         "max-length": 40,
         "icon": true,
-        // "icon-size": 20,
         "icon-size": 36,
         "rewrite": {
             "(.*)Mozilla Firefox": "Mozzarella Firefox" // ShyFox fucked up
@@ -135,7 +131,7 @@
         "dynamic-order": [
             "title"
         ],
-        "max-length": 20
+        "max-length": 25
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -237,5 +233,60 @@
         "interval": 30,
         "tooltip": true,
         "format": "{}"
+    },
+    "custom/shutdown": {
+        "format": "⏻",
+        "on-click": "systemctl poweroff"
+    },
+    "custom/reboot": {
+        "format": "󰜉",
+        "on-click": "systemctl reboot"
+    },
+    "custom/suspend": {
+        "format": "󰒲",
+        "on-click": "systemctl suspend"
+    },
+    "custom/lock": {
+        "format": "󰦝",
+        "on-click": "loginctl lock-session"
+    },
+    // groups
+    "custom/scripts_icon": {
+        "format": "󱜧"
+    },
+    "group/scripts": {
+        "modules": [
+            "custom/scripts_icon",
+            "custom/idle_inhibitor",
+            "custom/tablet_profiler",
+            "custom/xdp",
+            "custom/screenrec",
+            "custom/vnc"
+        ],
+        "orientation": "horizontal",
+        "drawer": {
+            "children-class": "script",
+            "transition-duration": 100,
+            "click-to-reveal": true
+        }
+    },
+    "custom/power_icon": {
+        "format": "󰐧"
+    },
+    "group/power": {
+        "modules": [
+            "custom/power_icon",
+            "custom/lock",
+            "custom/suspend",
+            "custom/reboot",
+            "custom/shutdown"
+        ],
+        "orientation": "horizontal",
+        "drawer": {
+            "children-class": "power",
+            "transition-duration": 100,
+            "click-to-reveal": true,
+            "transition-left-to-right": false
+        }
     }
 }
