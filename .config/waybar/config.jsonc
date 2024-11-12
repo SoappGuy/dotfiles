@@ -257,7 +257,7 @@
     "group/scripts": {
         "modules": [
             "custom/scripts_icon",
-            "custom/idle_inhibitor",
+            "idle_inhibitor",
             "custom/tablet_profiler",
             "custom/xdp",
             "custom/screenrec",
