@@ -6,7 +6,7 @@ START_TIME=0
 
 start_recording() {
     GEOMETRY="$(slurp -o)"
-    wf-recorder -g "$GEOMETRY" -f "$VIDEOS_DIR/$FILENAME" -y "$@" &
+    wf-recorder -g "$GEOMETRY" -f "$VIDEOS_DIR/$FILENAME" -y --audio="$*" &
     date +%s > "/tmp/screenrec_start_time"
 }
 
@@ -56,6 +56,9 @@ case "$1" in
         ;;
     toggle)
         toggle_recording "$@"
+        ;;
+    togglea)
+        toggle_recording "-a=$(wpctl inspect @DEFAULT_AUDIO_SINK@ | grep 'node.name' | sed -n 's/.*node.name = "\(.*\)"/\1/p' | sed 's/alsa_output/alsa_input/; s/$/.monitor/')"
         ;;
     *)
         echo "Usage: $0 {start|status|stop|toggle}"
