@@ -1,4 +1,4 @@
-((text) @injection.content
-  (#lua-match? @injection.content "{{.*}}")
-  (#set! injection.language "gotmpl"))
+; ((text) @injection.content
+;   (#lua-match? @injection.content "{{.*}}")
+;   (#set! injection.language "gotmpl"))
 

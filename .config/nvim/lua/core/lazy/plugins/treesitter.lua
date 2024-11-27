@@ -1,7 +1,11 @@
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
-    { 'kevinhwang91/nvim-ufo', otps = {}, dependencies = { 'kevinhwang91/promise-async' } },
+    {
+      'kevinhwang91/nvim-ufo',
+      otps = {},
+      dependencies = { 'kevinhwang91/promise-async' },
+    },
     { 'nvim-treesitter/nvim-treesitter-textobjects' },
     {
       'luukvbaal/statuscol.nvim',

@@ -12,7 +12,8 @@ group-by=app-icon,app-name,summary,body,urgency
 # Default: <b>%s</b>\n%b Default when grouped: (%g) <b>%s</b>\n%b
 format=<b>%s</b>\n%b
 #icon-path=path[:path...]
-on-notify=exec mpv --af=volume=0.3 /usr/share/sounds/freedesktop/stereo/device-added.oga
+# on-notify=exec mpv --af=volume=0.3 /usr/share/sounds/freedesktop/stereo/device-added.oga
+on-notify=exec mpv --af=volume=0.05 /usr/share/sounds/freedesktop/stereo/pda.mp3
 on-button-left=invoke-default-action
 on-button-middle=dismiss-group
 on-button-right=dismiss

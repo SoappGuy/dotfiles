@@ -117,11 +117,54 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        nixd = {
+          cmd = { 'nixd' },
+          settings = {
+            nixd = {
+              nixpkgs = {
+                expr = 'import <nixpkgs> { }',
+              },
+              formatting = {
+                command = { 'alejandra' },
+              },
+            },
+          },
+        },
+        texlab = {
+          settings = {
+            texlab = {
+              auxDirectory = '.',
+              bibtexFormatter = 'texlab',
+              build = {
+                -- args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '%f' },
+                -- executable = 'latexmk',
+                executable = 'tectonic',
+                args = { '%f' },
+                forwardSearchAfter = false,
+                onSave = true,
+              },
+              chktex = {
+                onEdit = true,
+                onOpenAndSave = true,
+              },
+              diagnosticsDelay = 300,
+              formatterLineLength = 80,
+              forwardSearch = {
+                args = {},
+              },
+              latexFormatter = 'latexindent',
+              latexindent = {
+                modifyLineBreaks = false,
+              },
+            },
+          },
+        },
         htmx = {},
         gopls = {},
         hyprls = {},
         bashls = {},
         jsonls = {},
+        ts_ls = {},
         cssls = {},
         html = {},
         clangd = {},
@@ -137,6 +180,10 @@ return {
                 {
                   driver = 'mysql',
                   dataSourceName = 'root:password@tcp(127.0.0.1:3306)/class_manager',
+                },
+                {
+                  driver = 'mysql',
+                  dataSourceName = 'root:password@tcp(127.0.0.1:3306)/foodcourt',
                 },
               },
             },
@@ -206,22 +253,6 @@ return {
             lspconfig[server_name].setup(server)
           end,
           rust_analyzer = function() end,
-          ltex = function() end,
-          -- ltex = function()
-          --   lspconfig.ltex.setup {
-          --     capabilities = capabilities,
-          --     settings = {
-          --       ltex = {
-          --         filetypes = { 'markdown', 'text' },
-          --         flags = { debounce_text_changes = 300 },
-          --         language = 'en-US',
-          --       },
-          --     },
-          --     on_attach = function(client, bufnr)
-          --       require('ltex-utils').on_attach(bufnr)
-          --     end,
-          --   }
-          -- end,
         },
       }
     end,

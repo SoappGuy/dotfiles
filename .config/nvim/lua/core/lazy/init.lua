@@ -170,10 +170,65 @@ require('lazy').setup({
       vim.keymap.set('v', '<A-l>', ':MoveHBlock(1)<CR>', opts)
     end,
   },
+  {
+    'johmsalas/text-case.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim' },
+    config = function()
+      require('textcase').setup {}
+      require('telescope').load_extension 'textcase'
+    end,
+    keys = {
+      'ga', -- Default invocation prefix
+      { 'ga.', '<cmd>TextCaseOpenTelescope<CR>', mode = { 'n', 'x' }, desc = 'Telescope' },
+      { '<leader>cs', '<cmd>TextCaseStartReplacingCommand<CR>', mode = 'n', desc = '[s]mart replace' },
+    },
+    cmd = {
+      'Ss',
+      'TextCaseOpenTelescope',
+      'TextCaseOpenTelescopeQuickChange',
+      'TextCaseOpenTelescopeLSPChange',
+      'TextCaseStartReplacingCommand',
+    },
+    opt = {
+      substitude_command_name = 'Ss', -- Default: 'Subs'
+    },
+    -- If you want to use the interactive feature of the `Subs` command right away, text-case.nvim
+    -- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
+    -- available after the first executing of it or after a keymap of text-case.nvim has been used.
+    lazy = false,
+  },
+  -- Smooth cursor movement.
+  {
+    'sphamba/smear-cursor.nvim',
+    opts = {},
+  },
 
-  { 'github/copilot.vim' },
-  { 'tpope/vim-sleuth' },
+  {
+    'chrisgrieser/nvim-spider',
+    keys = {
+      {
+        '<S-e>',
+        "<cmd>lua require('spider').motion('e')<CR>",
+        mode = { 'n', 'o', 'x' },
+      },
+      {
+        '<S-w>',
+        "<cmd>lua require('spider').motion('w')<CR>",
+        mode = { 'n', 'o', 'x' },
+      },
+      {
+        '<S-b>',
+        "<cmd>lua require('spider').motion('b')<CR>",
+        mode = { 'n', 'o', 'x' },
+      },
+    },
+    lazy = true,
+  },
+
   { 'rhysd/clever-f.vim' },
+  { 'github/copilot.vim' },
+  { 'tpope/vim-abolish' },
+  { 'tpope/vim-sleuth' },
   { 'nishigori/increment-activator' },
   { 'dstein64/vim-startuptime', lazy = false },
 

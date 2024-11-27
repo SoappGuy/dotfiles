@@ -44,7 +44,7 @@
         "separate-outputs": true,
         "max-length": 40,
         "icon": true,
-        "icon-size": 36,
+        "icon-size": 30,
         "rewrite": {
             "(.*)Mozilla Firefox": "Mozzarella Firefox" // ShyFox fucked up
         }

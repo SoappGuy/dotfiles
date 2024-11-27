@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ENABLED=false
+ENABLED=true
 
 # Set period bounds
 START_TIME=$(date +%s -d '-1hour -35minutes')

@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 report() {
-    local dirty="$(grep -w Dirty: /proc/meminfo | cut -d ':' -f 2 | tr -d ' ')"
+    dirty="$(grep -w Dirty: /proc/meminfo | cut -d ':' -f 2 | tr -d ' ')"
     echo -n -e "\e[2K\rSyncing ${dirty}... "
 }
 
