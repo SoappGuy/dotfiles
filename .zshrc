@@ -33,7 +33,8 @@ zinit cdreplay -q
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/go/bin"
-export RUSTC_WRAPPER="$HOME/.cargo/bin/sccache"
+# export RUSTC_WRAPPER="$HOME/.cargo/bin/sccache"
+export RUSTC_WRAPPER="/usr/bin/sccache"
 export EDITOR=nvim
 export DOTNET_ROOT="$HOME/.dotnet"
 
@@ -86,13 +87,26 @@ alias sync="~/.scripts/watch_sync.sh"
 alias paru="paru --bottomup"
 alias s="kitten ssh"
 
-# Start starship prompt
-eval "$(starship init zsh)"
+# functions
+drop() {
+  log_file="$XDG_RUNTIME_DIR/$(basename "$1")_$(date +%Y%m%d%H%M%S).log"
+  "$@" > "$log_file" 2>&1 & disown
+}
 
 # Shell integrations
-eval "$(fzf --zsh)"
+eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"
 
+# fzf settings
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
+# export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
+export FZF_CTRL_T_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
+export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
+#
 # gpg agent
 export GPG_TTY=$(tty)
 gpg-connect-agent --quiet updatestartuptty /bye >/dev/null

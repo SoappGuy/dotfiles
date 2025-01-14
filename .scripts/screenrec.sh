@@ -61,6 +61,6 @@ case "$1" in
         toggle_recording "-a=$(wpctl inspect @DEFAULT_AUDIO_SINK@ | grep 'node.name' | sed -n 's/.*node.name = "\(.*\)"/\1/p' | sed 's/alsa_output/alsa_input/; s/$/.monitor/')"
         ;;
     *)
-        echo "Usage: $0 {start|status|stop|toggle}"
+        echo "Usage: $0 {start|status|stop|toggle|togglea}"
         ;;
 esac

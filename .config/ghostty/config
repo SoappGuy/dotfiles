@@ -1,0 +1,8 @@
+font-family = IosevkaTerm Nerd Font
+font-size = 15
+
+theme = gruber-darker
+
+window-decoration = false
+gtk-single-instance = true
+

@@ -117,19 +117,7 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        nixd = {
-          cmd = { 'nixd' },
-          settings = {
-            nixd = {
-              nixpkgs = {
-                expr = 'import <nixpkgs> { }',
-              },
-              formatting = {
-                command = { 'alejandra' },
-              },
-            },
-          },
-        },
+        pyright = {},
         texlab = {
           settings = {
             texlab = {
@@ -141,7 +129,7 @@ return {
                 executable = 'tectonic',
                 args = { '%f' },
                 forwardSearchAfter = false,
-                onSave = true,
+                onSave = false,
               },
               chktex = {
                 onEdit = true,
@@ -167,8 +155,8 @@ return {
         ts_ls = {},
         cssls = {},
         html = {},
+        emmet_ls = {},
         clangd = {},
-        ruff_lsp = {},
         omnisharp = {},
         sqls = {
           on_attach = function(client, bufnr)

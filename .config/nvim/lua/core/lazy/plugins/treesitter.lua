@@ -33,7 +33,6 @@ return { -- Highlight, edit, and navigate code
   event = 'BufRead',
   opts = {
     ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
-    -- Autoinstall languages that are not installed
     auto_install = true,
     highlight = {
       enable = true,
@@ -43,6 +42,13 @@ return { -- Highlight, edit, and navigate code
       additional_vim_regex_highlighting = { 'ruby' },
     },
     indent = { enable = true, disable = { 'ruby' } },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        node_incremental = 'v',
+        node_decremental = 'V',
+      },
+    },
 
     textobjects = {
       move = {

@@ -225,6 +225,31 @@ require('lazy').setup({
     lazy = true,
   },
 
+  {
+    'Wansmer/langmapper.nvim',
+    lazy = false,
+    priority = 1,
+    config = function()
+      require('langmapper').setup {}
+
+      local function escape(str)
+        local escape_chars = [[;,."|\]]
+        return vim.fn.escape(str, escape_chars)
+      end
+
+      -- Recommended to use lua template string
+      local en = [[`qwertyuiop[]asdfghjkl;'\zxcvbnm,./]]
+      local ua = [['йцукенгшщзхїфівапролджєґячсмитьбю.]]
+      local EN = [[~QWERTYUIOP{}ASDFGHJKL:"|ZXCVBNM<>?]]
+      local UA = [[ʼЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄҐЯЧСМИТЬБЮ,]]
+
+      vim.opt.langmap = vim.fn.join({
+        escape(UA) .. ';' .. escape(EN),
+        escape(ua) .. ';' .. escape(en),
+      }, ',')
+    end,
+  },
+
   { 'rhysd/clever-f.vim' },
   { 'github/copilot.vim' },
   { 'tpope/vim-abolish' },

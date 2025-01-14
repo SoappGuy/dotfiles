@@ -14,6 +14,9 @@ sleep 0.1
 /usr/lib/xdg-desktop-portal-gnome &
 hyprctl notify -1 2000 "rgb(00ffff)" "XDP-GNOME"
 sleep 0.1
+/usr/lib/xdg-desktop-portal-kde &
+hyprctl notify -1 2000 "rgb(00ffff)" "XDP-KDE"
+sleep 0.1
 /usr/lib/xdg-desktop-portal &
 hyprctl notify -1 1000 "rgb(00ffff)" "XDP"
 

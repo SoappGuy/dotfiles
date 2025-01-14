@@ -4,8 +4,10 @@
     "height": 35,
     "spacing": 4, // Gaps between modules (4px)
     "output": [
+        "eDP-1",
         "eDP-2",
-        "HDMI-A-1"
+        "HDMI-A-1",
+        "HDMI-A-2"
     ],
     // modules
     "modules-left": [
