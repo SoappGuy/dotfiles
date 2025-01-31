@@ -8,5 +8,5 @@ configuration {
 	combi-modes: [ drun ];
 }
 
-@theme "dmenu_custom"
+@theme "squared"
 
