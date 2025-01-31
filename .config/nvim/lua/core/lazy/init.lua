@@ -250,6 +250,15 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'Wansmer/treesj',
+    keys = { '<space>m', '<space>j', '<space>s' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
+    config = function()
+      require('treesj').setup {}
+    end,
+  },
+
   { 'rhysd/clever-f.vim' },
   { 'github/copilot.vim' },
   { 'tpope/vim-abolish' },

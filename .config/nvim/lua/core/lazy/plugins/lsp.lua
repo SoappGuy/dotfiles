@@ -117,6 +117,17 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        tinymist = {
+          settings = {
+            formatterMode = 'typstyle',
+            exportPdf = 'onType',
+            outputPath = '$root/$dir/$name',
+          },
+          single_file_support = true,
+          root_dir = function(_, bufnr)
+            return vim.fs.root(bufnr, { '.git' }) or vim.fn.expand '%:p:h'
+          end,
+        },
         pyright = {},
         texlab = {
           settings = {
@@ -172,23 +183,6 @@ return {
                 {
                   driver = 'mysql',
                   dataSourceName = 'root:password@tcp(127.0.0.1:3306)/foodcourt',
-                },
-              },
-            },
-          },
-        },
-        rust_analyzer = {
-          settings = {
-            ['rust-analyzer'] = {
-              checkOnSave = {
-                allFeatures = true,
-                overrideCommand = {
-                  'cargo',
-                  'clippy',
-                  '--workspace',
-                  '--message-format=json',
-                  '--all-targets',
-                  '--all-features',
                 },
               },
             },
