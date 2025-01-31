@@ -14,18 +14,28 @@ fi
 # Source installed zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# plugins
+zinit ice wait lucid
 zinit light zsh-users/zsh-syntax-highlighting
+
+zinit ice wait lucid
 zinit light zsh-users/zsh-completions
+
+zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
+
+zinit ice wait lucid
 zinit light sudosubin/zsh-poetry
 
+zinit ice wait lucid
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
-# load zsh-complitions
-autoload -U compinit && compinit
+autoload -Uz compinit
+compinit -C
+
 zinit cdreplay -q
 
 # Exports
@@ -37,12 +47,14 @@ export PATH="$PATH:$HOME/go/bin"
 export RUSTC_WRAPPER="/usr/bin/sccache"
 export EDITOR=nvim
 export DOTNET_ROOT="$HOME/.dotnet"
+export UNI="$HOME/Documents/NURE"
+export DIFFPROG="nvim -d"
 
 # Styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --icons -1 $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons -1 $realpath'
 
 # Keybinds
 autoload -U history-search-end
@@ -76,8 +88,8 @@ function yy() {
 }
 
 # aliases
-alias ls="exa --icons"
-alias tree="exa --icons --tree"
+alias ls="eza --icons"
+alias tree="eza --icons --tree"
 # alias cat="bat"
 alias cd="z"
 alias cp="advcp -g"
@@ -86,6 +98,9 @@ alias rm="trash"
 alias sync="~/.scripts/watch_sync.sh"
 alias paru="paru --bottomup"
 alias s="kitten ssh"
+alias vi="nvim"
+alias vim="nvim"
+alias e="nvim"
 
 # functions
 drop() {
@@ -106,7 +121,7 @@ export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4
 # export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
 export FZF_CTRL_T_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
 export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
-#
+
 # gpg agent
 export GPG_TTY=$(tty)
 gpg-connect-agent --quiet updatestartuptty /bye >/dev/null
