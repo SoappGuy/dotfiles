@@ -13,25 +13,22 @@
     "modules-left": [
         "hyprland/workspaces",
         "group/scripts",
-        "pulseaudio",
-        "pulseaudio#microphone",
+        "pulseaudio#output",
+        "pulseaudio#input",
         "backlight",
-        "custom/updates",
-        "custom/protonmail",
         "mpris"
     ],
     "modules-center": [
         "hyprland/window"
     ],
     "modules-right": [
-        "custom/schedule",
+        // "custom/schedule",
         "hyprland/submap",
         "tray",
         "hyprland/language",
-        "custom/notifications",
         "memory",
         "battery",
-        "group/power",
+        "custom/notifications",
         "clock"
     ],
     // hyprland
@@ -64,10 +61,9 @@
         "spacing": 0
     },
     "clock": {
-        "format": "{:%H:%M:%S}",
+        "format": "{:%b %d - %H:%M:%S}",
         "interval": 1,
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
-        "format-alt": "{:%Y-%m-%d}",
         "calendar": {
             "mode": "month",
             "on-click-right": "mode",
@@ -100,7 +96,6 @@
     },
     "battery": {
         "format": "{capacity}% {icon} {power:.1f} wt",
-        "format-alt": "{capacity}% {icon}",
         "format-charging": "{capacity}% 󰂄",
         "format-plugged": "{capacity}% ",
         "states": {
@@ -135,7 +130,7 @@
         ],
         "max-length": 25
     },
-    "pulseaudio": {
+    "pulseaudio#output": {
         "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} 󰂯 {volume}%",
         "format-muted": "{icon}",
@@ -161,7 +156,7 @@
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
         "smooth-scrolling-threshold": 1
     },
-    "pulseaudio#microphone": {
+    "pulseaudio#input": {
         "format": "{format_source}",
         "format-source": " {volume} %",
         "format-source-muted": "",
@@ -173,27 +168,23 @@
     // custom complicated
     "custom/notifications": {
         "tooltip": false,
-        "format": "{icon}",
-        "format-icons": {
-            "default": "",
-            "dnd": ""
-        },
-        "return-type": "json",
-        "exec": "~/.scripts/mako.sh",
-        "on-click": "~/.scripts/mako.sh switch",
-        "on-click-right": "~/.scripts/mako.sh restore",
-        "escape": true,
-        "interval": 1
-    },
-    "custom/updates": {
         "format": "{} {icon}",
-        "return-type": "json",
         "format-icons": {
-            "has-updates": "󱍷",
-            "updated": "󰂪"
+            "notification": "",
+            "none": "",
+            "dnd-notification": "",
+            "dnd-none": "",
+            "inhibited-notification": "",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "",
+            "dnd-inhibited-none": ""
         },
-        "exec-if": "which waybar-module-pacman-updates",
-        "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     },
     "custom/screenrec": {
         "tooltip": false,
@@ -208,17 +199,6 @@
         "on-click-right": "~/.scripts/screenrec.sh toggle",
         // to see all possible outputs use "pactl list sources | grep Name"
         "interval": 1
-    },
-    "custom/protonmail": {
-        "exec": "bar-protonmail -sm -b ''",
-        "return-type": "json",
-        "interval": 10,
-        "tooltip": false,
-        "on-click": "xdg-open https://mail.proton.me/u/0/inbox"
-    },
-    "custom/tablet_profiler": {
-        "format": "",
-        "on-click": "~/.scripts/otd_profiler.sh"
     },
     // custom simple
     "custom/xdp": {
@@ -236,22 +216,6 @@
         "tooltip": true,
         "format": "{}"
     },
-    "custom/shutdown": {
-        "format": "⏻",
-        "on-click": "systemctl poweroff"
-    },
-    "custom/reboot": {
-        "format": "󰜉",
-        "on-click": "systemctl reboot"
-    },
-    "custom/suspend": {
-        "format": "󰒲",
-        "on-click": "systemctl suspend"
-    },
-    "custom/lock": {
-        "format": "󰦝",
-        "on-click": "loginctl lock-session"
-    },
     // groups
     "custom/scripts_icon": {
         "format": "󱜧"
@@ -260,7 +224,6 @@
         "modules": [
             "custom/scripts_icon",
             "idle_inhibitor",
-            "custom/tablet_profiler",
             "custom/xdp",
             "custom/screenrec",
             "custom/vnc"
@@ -270,25 +233,6 @@
             "children-class": "script",
             "transition-duration": 100,
             "click-to-reveal": true
-        }
-    },
-    "custom/power_icon": {
-        "format": "󰐧"
-    },
-    "group/power": {
-        "modules": [
-            "custom/power_icon",
-            "custom/lock",
-            "custom/suspend",
-            "custom/reboot",
-            "custom/shutdown"
-        ],
-        "orientation": "horizontal",
-        "drawer": {
-            "children-class": "power",
-            "transition-duration": 100,
-            "click-to-reveal": true,
-            "transition-left-to-right": false
         }
     }
 }
