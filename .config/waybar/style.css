@@ -9,7 +9,8 @@
 
 /* Background Colors */
 @define-color bg-minus-1 #101010;
-@define-color bg #181818;
+/* @define-color bg #181818; */
+@define-color bg rgba(24, 24, 24, 0.5);
 @define-color bg-plus-1 #282828;
 @define-color bg-plus-2 #453d41;
 @define-color bg-plus-3 #484848;
@@ -108,24 +109,20 @@
     border-right: none;
 }
 
+
+#idle_inhibitor,
 #mode,
 #battery,
 #cpu,
 #memory,
 #network,
 #pulseaudio,
-#custom-tablet_profiler,
-#custom-xdp,
-#custom-vnc,
-#idle_inhibitor,
 #backlight,
 #custom-storage,
 #custom-updates,
 #custom-weather,
-#custom-screenrec,
 #custom-mail,
 #custom-protonmail,
-#custom-scripts_icon,
 #custom-power_icon,
 #custom-shutdown,
 #custom-reboot,

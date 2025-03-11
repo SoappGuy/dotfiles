@@ -1,149 +1,97 @@
-return { -- Autocompletion
-  'hrsh7th/nvim-cmp',
-  event = 'InsertEnter',
+local M = {
+  'saghen/blink.cmp',
+  version = '*',
+
+  event = 'BufReadPre',
+
   dependencies = {
+    'echasnovski/mini.snippets',
     {
-      'L3MON4D3/LuaSnip',
-      build = (function()
-        if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-          return
-        end
-        return 'make install_jsregexp'
-      end)(),
-      dependencies = {
-        {
-          'rafamadriz/friendly-snippets',
-          config = function()
-            require('luasnip.loaders.from_vscode').lazy_load()
-          end,
-        },
-      },
-    },
-    'saadparwaiz1/cmp_luasnip',
-    'onsails/lspkind.nvim',
-
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-nvim-lsp-signature-help',
-    'hrsh7th/cmp-path',
-    'f3fora/cmp-spell',
-
-    {
-      'MattiasMTS/cmp-dbee',
-      dependencies = {
-        { 'kndndrj/nvim-dbee' },
-      },
-      ft = 'sql', -- optional but good to have
-      opts = {}, -- needed
-    },
-
-    {
-      'Jezda1337/nvim-html-css',
-      dependencies = {
-        'nvim-treesitter/nvim-treesitter',
-        'nvim-lua/plenary.nvim',
-      },
-      opt = {},
-      option = {
-        enable_on = {
-          'html',
-          'css',
-          'gotmpl',
-        },
-        file_extensions = { 'css', 'sass', 'less', 'html', 'gotmpl' }, -- set the local filetypes from which you want to derive classes
-        style_sheets = {
-          -- example of remote styles, only css no js for now
-          'https://cdn.jsdelivr.net/npm/beercss@3.7.10/dist/cdn/beer.min.css',
-        },
-      },
+      'saghen/blink.compat',
+      enabled = false,
+      version = '*',
+      lazy = true,
+      opts = {},
+      dependencies = {},
     },
   },
-  config = function()
-    -- See `:help cmp`
-    local cmp = require 'cmp'
-    local luasnip = require 'luasnip'
-    local lspkind = require 'lspkind'
 
-    luasnip.config.setup {}
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
+  opts = {
+    keymap = {
+      preset = 'default',
 
-    cmp.setup {
-      snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
-      },
-      completion = { completeopt = 'menu,menuone,noinsert' },
+      ['<C-p>'] = { 'select_prev', 'fallback' },
+      ['<C-n>'] = { 'select_next', 'fallback' },
 
-      mapping = cmp.mapping.preset.insert {
-        -- ['<C-n>'] = cmp.mapping.select_next_item(),
-        -- ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-j>'] = cmp.mapping.select_next_item(),
-        ['<C-k>'] = cmp.mapping.select_prev_item(),
+      ['<S-k>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<S-j>'] = { 'scroll_documentation_down', 'fallback' },
 
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<C-e>'] = { 'hide', 'fallback' },
+    },
 
-        -- ['<C-y>'] = cmp.mapping.confirm { select = true },
-        ['<C-Space>'] = cmp.mapping.confirm { select = true },
-        ['<C-S-Space>'] = cmp.mapping.complete {},
-        ['<C-l>'] = cmp.mapping(function()
-          if luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
-          end
-        end, { 'i', 's' }),
-        ['<C-h>'] = cmp.mapping(function()
-          if luasnip.locally_jumpable(-1) then
-            luasnip.jump(-1)
-          end
-        end, { 'i', 's' }),
-      },
-      sources = {
+    appearance = {
+      use_nvim_cmp_as_default = true,
+      nerd_font_variant = 'mono',
+    },
 
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lsp_signature_help' },
-        { name = 'buffer' },
-        { name = 'luasnip' },
-        { name = 'html-css' },
-        { name = 'cmp-dbee' },
-        { name = 'path' },
-        -- {
-        --   name = 'spell',
-        --   option = {
-        --     keep_all_entries = false,
-        --     enable_in_context = function()
-        --       return true
-        --     end,
-        --     preselect_correct_word = true,
-        --   },
-        -- },
-      },
+    snippets = { preset = 'mini_snippets' },
 
-      window = {
-        completion = cmp.config.window.bordered {
-          border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-          col_offset = -3,
-          side_padding = 0,
+    sources = {
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+
+      providers = {
+        snippets = {
+          name = 'snippets',
+          enabled = true,
+          max_items = 15,
+          min_keyword_length = 2,
+          module = 'blink.cmp.sources.snippets',
+          score_offset = 85,
         },
-        documentation = cmp.config.window.bordered {
-          border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+        path = {
+          name = 'Path',
+          module = 'blink.cmp.sources.path',
+          score_offset = 25,
+          fallbacks = { 'snippets', 'buffer' },
+          opts = {
+            trailing_slash = false,
+            label_trailing_slash = true,
+            get_cwd = function(context)
+              return vim.fn.expand(('#%d:p:h'):format(context.bufnr))
+            end,
+            show_hidden_files_by_default = true,
+          },
+        },
+        buffer = {
+          name = 'Buffer',
+          enabled = true,
+          max_items = 3,
+          module = 'blink.cmp.sources.buffer',
+          min_keyword_length = 4,
+          score_offset = 15,
         },
       },
-      formatting = {
-        fields = { 'kind', 'abbr' },
-        format = function(entry, vim_item)
-          local kind = lspkind.cmp_format { mode = 'symbol', maxwidth = 50 }(entry, vim_item)
+    },
 
-          if entry.source.name == 'html-css' then
-            kind.menu = entry.completion_item.menu
-          else
-            kind.menu = ''
-          end
-
-          kind.kind = ' ' .. kind.kind .. ' '
-
-          return kind
-        end,
+    completion = {
+      menu = { border = 'single' },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 0,
+        window = { border = 'single' },
       },
-    }
-  end,
+    },
+    signature = {
+      enabled = true,
+      window = { border = 'single' },
+    },
+
+    fuzzy = { implementation = 'prefer_rust_with_warning' },
+  },
+  opts_extend = { 'sources.default' },
 }
+
+return M

@@ -3,6 +3,7 @@
 killall -e xdg-desktop-portal-hyprland
 killall -e xdg-desktop-portal-gtk
 killall -e xdg-desktop-portal-gnome
+killall -e xdg-desktop-portal-kde
 killall -e xdg-desktop-portal
 
 /usr/lib/xdg-desktop-portal-hyprland &

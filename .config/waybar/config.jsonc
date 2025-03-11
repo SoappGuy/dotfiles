@@ -12,7 +12,8 @@
     // modules
     "modules-left": [
         "hyprland/workspaces",
-        "group/scripts",
+        // "group/scripts",
+        "idle_inhibitor",
         "pulseaudio#output",
         "pulseaudio#input",
         "backlight",

@@ -78,14 +78,17 @@ vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decr
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
+vim.opt.fileencoding = 'cp1251' -- Встановлює кодування під час збереження файлу
+vim.opt.fileencodings = 'utf-8,cp1251,cp866,latin1' -- Порядок спроб визначення кодування
+
 vim.opt.spell = true
 vim.opt.spelllang = { 'en_us', 'uk' }
 vim.opt.spelloptions = 'camel'
 
 vim.filetype.add {
-  pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
+  extension = { gotmpl = 'gotmpl' },
 }
 
-vim.filetype.add {
-  extension = { gotmpl = 'gotmpl' },
+vim.diagnostic.config {
+  virtual_lines = true,
 }
