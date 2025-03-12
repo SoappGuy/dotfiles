@@ -1,12 +1,12 @@
 local M = {
   'mfussenegger/nvim-dap',
   dependencies = {
-    { 'igorlfs/nvim-dap-view', opts = {} },
+    'igorlfs/nvim-dap-view',
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
     'leoluz/nvim-dap-go',
-    'mfussenegger/nvim-dap-python',
+    { 'mfussenegger/nvim-dap-python', lazy = true },
   },
   commands = {
     'DapContinue',
@@ -20,10 +20,10 @@ local M = {
     { '<leader>dc', ":DapContinue<CR>",         desc = 'Debug: Start/Continue' },
     { '<leader>db', ":DapToggleBreakpoint<CR>", desc = 'Debug: Toggle Breakpoint' },
     { '<F1>',       ":DapStepInto<CR>",         desc = 'Debug: Step Into' },
-    { '<F2>',       ":DapStepOver<CR>",         desc = 'Debug: Step Over' },
-    { '<F3>',       ":DapStepOut<CR>",          desc = 'Debug: Step Out' },
     { '<leader>di', ":DapStepInto<CR>",         desc = 'Debug: Step Into (F1)' },
+    { '<F2>',       ":DapStepOver<CR>",         desc = 'Debug: Step Over' },
     { '<leader>do', ":DapStepOver<CR>",         desc = 'Debug: Step Over (F2)' },
+    { '<F3>',       ":DapStepOut<CR>",          desc = 'Debug: Step Out' },
     { '<leader>dt', ":DapStepOut<CR>",          desc = 'Debug: Step Out (F3)' },
     { '<leader>du', ':DapViewToggle<CR>',       desc = 'Debug: Toggle UI' },
   },

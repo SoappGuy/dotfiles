@@ -1,12 +1,12 @@
-return {
+local M = {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
+  ---@module 'snacks'
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
     quickfile = { enabled = true },
-    input = { enabled = true },
     indent = {
       animate = {
         enabled = vim.fn.has 'nvim-0.10' == 1,
@@ -48,5 +48,22 @@ return {
       },
       refresh = 50,
     },
+    image = {
+      enabled = true,
+      doc = {
+        inline = false,
+        float = true,
+      },
+    },
+    styles = {
+      snacks_image = {
+        relative = 'editor',
+        border = 'single',
+        row = 0,
+        col = -1,
+      }
+    }
   },
 }
+
+return M

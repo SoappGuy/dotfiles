@@ -5,7 +5,8 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
+require('lazy').setup(
+  {
     {
       'scottmckendry/cyberdream.nvim',
       lazy = false,
@@ -15,10 +16,8 @@ require('lazy').setup({
         vim.cmd 'colorscheme cyberdream'
       end,
     },
-
     {
       'michaelrommel/nvim-silicon',
-      lazy = true,
       cmd = 'Silicon',
       opts = {
         font = 'IosevkaTerm Nerd Font=34',
@@ -30,62 +29,33 @@ require('lazy').setup({
         end,
       },
     },
-
     {
-      'chrisgrieser/nvim-spider',
-      lazy = true,
+      'chrisgrier/nvim-spider',
       keys = {
         { '<S-e>', "<cmd>lua require('spider').motion('e')<CR>", mode = { 'n', 'o', 'x' } },
         { '<S-w>', "<cmd>lua require('spider').motion('w')<CR>", mode = { 'n', 'o', 'x' } },
         { '<S-b>', "<cmd>lua require('spider').motion('b')<CR>", mode = { 'n', 'o', 'x' } },
       },
     },
-
-    { 'sphamba/smear-cursor.nvim',    opts = {} },
-    { 'github/copilot.vim' },
-    { 'rhysd/clever-f.vim' },
-    { 'windwp/nvim-autopairs',        event = 'InsertEnter', opts = {} },
-    { 'nishigori/increment-activator' }, -- More actions on <C-a>/<C-x> (like true -> false -> true ...)
-    { 'tpope/vim-sleuth' },              -- Filetype based tab width
-    {                                    -- Smart substitute
+    { 'sphamba/smear-cursor.nvim',     event = "VimEnter" },
+    { 'github/copilot.vim',            event = "BufReadPre" },
+    { 'rhysd/clever-f.vim',            keys = { 'f', 'F', 't', 'T' } },
+    { 'windwp/nvim-autopairs',         event = "InsertEnter",                                              opts = {} }, -- Autopairs
+    { 'nishigori/increment-activator', keys = { { '<C-a>', noremap = true }, { '<C-x>', noremap = true } } },          -- More actions like true -> false -> true ...
+    { 'tpope/vim-sleuth',              event = 'BufReadPre' },                                                         -- Filetype based tab width
+    {
       'tpope/vim-abolish',
-      init = function()
-        vim.cmd 'cabbrev s Subvert'
+      event = 'VeryLazy',
+      config = function()
+        vim.cmd 'cabbrev S Subvert'
+        vim.api.nvim_set_keymap('n', '/', ':Abolish -search ', {})
       end,
-    },
-
-    { import = 'core.lazy.plugins' },
+    }, -- Smart substitute
+    { import = 'lazy_plugins' },
   },
+
   {
-    rtp = {
-      disabled_plugins = {
-        "netrwPlugin",
-        -- "gzip",
-        -- "matchit",
-        -- "matchparen",
-        -- "tarPlugin",
-        -- "tohtml",
-        -- "tutor",
-        -- "zipPlugin",
-      },
-    },
-    ui = {
-      border = 'rounded',
-      icons = vim.g.have_nerd_font and {} or {
-        cmd = '⌘',
-        config = '🛠',
-        event = '📅',
-        ft = '📂',
-        init = '⚙',
-        keys = '🗝',
-        plugin = '🔌',
-        runtime = '💻',
-        require = '🌙',
-        source = '📄',
-        start = '🚀',
-        task = '📌',
-        lazy = '💤 ',
-      },
-    },
+    rtp = { disabled_plugins = { "netrwPlugin" } },
+    ui = { border = 'single', },
   }
 )

@@ -1,8 +1,9 @@
 return {
   'stevearc/conform.nvim',
-  lazy = false,
+  event = 'BufEnter',
   config = function()
     local conform = require 'conform'
+
     conform.setup {
       notify_on_error = true,
       format_on_save = function(bufnr)
@@ -30,7 +31,7 @@ return {
     }
 
     vim.keymap.set('', '<leader>f', function()
-      require('conform').format({ async = true }, function(err)
+      conform.format({ async = true }, function(err)
         if not err then
           local mode = vim.api.nvim_get_mode().mode
           if vim.startswith(string.lower(mode), 'v') then

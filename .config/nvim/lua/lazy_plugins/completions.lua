@@ -6,14 +6,7 @@ local M = {
 
   dependencies = {
     'echasnovski/mini.snippets',
-    {
-      'saghen/blink.compat',
-      enabled = false,
-      version = '*',
-      lazy = true,
-      opts = {},
-      dependencies = {},
-    },
+    'mini.snippets',
   },
 
   ---@module 'blink.cmp'

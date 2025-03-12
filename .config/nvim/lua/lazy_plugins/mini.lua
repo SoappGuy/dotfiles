@@ -1,26 +1,29 @@
 local M = {
-  { 'echasnovski/mini.ai',         opts = { n_lines = 500 }, event = 'BufReadPre' },
-  { 'echasnovski/mini.surround',   opts = {},                event = 'BufReadPre' },
-  { 'echasnovski/mini.comment',    opts = {},                event = 'BufReadPre' },
-  { 'echasnovski/mini.move',       opts = {},                event = 'BufReadPre' },
-  { 'echasnovski/mini.diff',       opts = {},                event = 'BufReadPre' },
-  { 'echasnovski/mini.splitjoin',  opts = {},                event = 'BufReadPre' },
+  { 'echasnovski/mini.ai',         opts = { n_lines = 500 }, event = 'BufEnter' },
+  { 'echasnovski/mini.surround',   opts = {},                event = 'BufEnter' },
+  { 'echasnovski/mini.comment',    opts = {},                event = 'BufEnter' },
+  { 'echasnovski/mini.move',       opts = {},                event = 'BufEnter' },
+  { 'echasnovski/mini.diff',       opts = {},                event = 'BufEnter' },
+  { 'echasnovski/mini.splitjoin',  opts = {},                event = 'BufEnter' },
+  { 'echasnovski/mini.cursorword', opts = {},                event = 'BufEnter' },
   { 'echasnovski/mini.icons',      opts = {},                event = 'VimEnter' },
-  { 'echasnovski/mini.cursorword', opts = {},                event = 'BufReadPre' },
   {
     'echasnovski/mini.snippets',
-    event = 'VimEnter',
+    lazy = true,
     dependencies = 'rafamadriz/friendly-snippets',
-    opts = {
-      snippets = {
-        require('mini.snippets').gen_loader.from_file '~/.config/nvim/snippets/global.json',
-        require('mini.snippets').gen_loader.from_lang(),
-      },
-    },
+    config = function()
+      local minisnippets = require 'mini.snippets'
+      minisnippets.setup {
+        snippets = {
+          minisnippets.gen_loader.from_file '~/.config/nvim/snippets/global.json',
+          minisnippets.gen_loader.from_lang(),
+        },
+      }
+    end,
   },
   {
     'echasnovski/mini.hipatterns',
-    event = 'BufReadPre',
+    event = 'VimEnter',
     config = function()
       local hipatterns = require 'mini.hipatterns'
       hipatterns.setup {
@@ -103,6 +106,44 @@ local M = {
       }
     end,
   },
+  {
+    'echasnovski/mini.pick',
+    lazy = true,
+    dependencies = {
+      { 'echasnovski/mini.extra', opts = {} },
+    },
+    keys = {
+      '<leader>ca', 'gd', 'gr', 'gI', '<leader>gt',
+      { '<leader>sh',       ':Pick help<CR>',                      desc = 'Search Help' },
+      { '<leader>sf',       ":Pick files tool='rg'<CR>",           desc = 'Search Files' },
+      { '<leader>sg',       ':Pick grep_live<CR>',                 desc = 'Search by Grep' },
+      { '<leader>sr',       ':Pick resume<CR>',                    desc = 'Resume previous picker' },
+      { '<leader><leader>', ':Pick buffers<CR>',                   desc = 'Find existing buffers' },
+      { '<leader>/',        ":Pick buf_lines scope='current'<CR>", desc = 'Fuzzily search in current buffer' },
+    },
+    config = function()
+      local minipick = require 'mini.pick'
+
+      vim.ui.select = minipick.ui_select
+
+      minipick.setup {
+        options = { use_cache = true },
+        window = {
+          config = function()
+            local height = math.floor(0.6 * vim.o.lines)
+            local width = math.floor(0.6 * vim.o.columns)
+            return {
+              anchor = 'NW',
+              height = height,
+              width = width,
+              row = math.floor(0.5 * (vim.o.lines - height)),
+              col = math.floor(0.5 * (vim.o.columns - width)),
+            }
+          end
+        },
+      }
+    end,
+  }
 }
 
 return M
