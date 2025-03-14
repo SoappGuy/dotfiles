@@ -19,6 +19,8 @@ return {
         lua = { 'stylua' },
         python = { 'isort', 'black' },
         rust = { 'rustfmt' },
+        cpp = { 'clang-format' },
+        c = { 'clang-format' },
         -- sql = { 'sql_formatter' },
       },
     }
