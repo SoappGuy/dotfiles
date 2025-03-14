@@ -1,12 +1,35 @@
 local M = {
-  { 'echasnovski/mini.ai',         opts = { n_lines = 500 }, event = 'BufEnter' },
-  { 'echasnovski/mini.surround',   opts = {},                event = 'BufEnter' },
-  { 'echasnovski/mini.comment',    opts = {},                event = 'BufEnter' },
-  { 'echasnovski/mini.move',       opts = {},                event = 'BufEnter' },
-  { 'echasnovski/mini.diff',       opts = {},                event = 'BufEnter' },
-  { 'echasnovski/mini.splitjoin',  opts = {},                event = 'BufEnter' },
-  { 'echasnovski/mini.cursorword', opts = {},                event = 'BufEnter' },
-  { 'echasnovski/mini.icons',      opts = {},                event = 'VimEnter' },
+  { 'echasnovski/mini.ai',       opts = { n_lines = 500 }, event = 'BufEnter' },
+  { 'echasnovski/mini.surround', opts = {},                event = 'BufEnter' },
+  { 'echasnovski/mini.comment',  opts = {},                event = 'BufEnter' },
+  { 'echasnovski/mini.move',     opts = {},                event = 'BufEnter' },
+  {
+    'echasnovski/mini.diff',
+    opts = {},
+    init = function()
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'MiniDiffUpdated',
+        callback = function(data)
+          local summary = vim.b[data.buf].minidiff_summary
+          local str = ""
+          if summary.add > 0 then
+            str = str .. '%#MiniDiffSignAdd# ' .. summary.add .. "%#MiniStatuslineDevinfo#"
+          end
+          if summary.change > 0 then
+            str = str .. ' %#MiniDiffSignChange# ' .. summary.change .. "%#MiniStatuslineDevinfo#"
+          end
+          if summary.delete > 0 then
+            str = str .. ' %#MiniDiffSignDelete# ' .. summary.delete .. "%#MiniStatuslineDevinfo#"
+          end
+          vim.b[data.buf].minidiff_summary_string = str
+        end
+      })
+    end,
+    event = 'BufEnter'
+  },
+  { 'echasnovski/mini.splitjoin',  opts = {}, event = 'BufEnter' },
+  { 'echasnovski/mini.cursorword', opts = {}, event = 'BufEnter' },
+  { 'echasnovski/mini.icons',      opts = {}, event = 'VimEnter' },
   {
     'echasnovski/mini.snippets',
     lazy = true,
