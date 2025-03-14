@@ -38,7 +38,7 @@ local M = {
       { 'DapLogPoint', '', 'DiagnosticSignInfo' },
     }
 
-    for _, sign in signs do
+    for _, sign in ipairs(signs) do
       vim.fn.sign_define(sign[1], { text = sign[2], texthl = sign[3], linehl = 'DapBreakpoint', numhl = 'DapBrealpoint' })
     end
 
