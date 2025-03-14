@@ -18,6 +18,8 @@ local M = {
       { 'williamboman/mason-lspconfig.nvim' },
       { 'saghen/blink.cmp' },
 
+      { 'mfussenegger/nvim-jdtls' },
+
       { 'j-hui/fidget.nvim',                opts = {} },
     },
     config = function()
@@ -100,7 +102,12 @@ local M = {
         hyprls = {},
       }
 
-      require('mason').setup()
+      require('mason').setup({
+        registries = {
+          'github:nvim-java/mason-registry',
+          "github:mason-org/mason-registry",
+        }
+      })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
