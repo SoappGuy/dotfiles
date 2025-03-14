@@ -38,7 +38,6 @@ require('lazy').setup(
       },
     },
     { 'sphamba/smear-cursor.nvim',     event = "VimEnter" },
-    { 'github/copilot.vim',            event = "BufReadPre" },
     { 'rhysd/clever-f.vim',            keys = { 'f', 'F', 't', 'T' } },
     { 'windwp/nvim-autopairs',         event = "InsertEnter",                                              opts = {} }, -- Autopairs
     { 'nishigori/increment-activator', keys = { { '<C-a>', noremap = true }, { '<C-x>', noremap = true } } },          -- More actions like true -> false -> true ...
