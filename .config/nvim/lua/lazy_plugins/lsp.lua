@@ -27,11 +27,6 @@ local M = {
         callback = function(event)
           local maps = {
             -- After changing these mappings don't forget to update the mini.pick keys for proper lazy-loading
-            { 'gd',         ":Pick lsp scope='definition'<CR>",                     'Goto definition' },
-            { 'gr',         ":Pick lsp scope='references'<CR>",                     'Goto references' },
-            { 'gI',         ":Pick lsp scope='implementation'<CR>",                 'Goto implementation' },
-            { '<leader>gt', ":Pick lsp scope='type_definition' <CR>",               'Goto type definition' },
-
             { 'gD',         vim.lsp.buf.declaration,                                'Goto declaration' },
             { '<leader>cr', vim.lsp.buf.rename,                                     'Rename' },
             { '<leader>ca', vim.lsp.buf.code_action,                                'Code action' },

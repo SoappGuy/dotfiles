@@ -113,13 +113,16 @@ local M = {
       { 'echasnovski/mini.extra', opts = {} },
     },
     keys = {
-      '<leader>ca', 'gd', 'gr', 'gI', '<leader>gt',
-      { '<leader>sh',       ':Pick help<CR>',                      desc = 'Search Help' },
-      { '<leader>sf',       ":Pick files tool='rg'<CR>",           desc = 'Search Files' },
-      { '<leader>sg',       ':Pick grep_live<CR>',                 desc = 'Search by Grep' },
-      { '<leader>sr',       ':Pick resume<CR>',                    desc = 'Resume previous picker' },
-      { '<leader><leader>', ':Pick buffers<CR>',                   desc = 'Find existing buffers' },
-      { '<leader>/',        ":Pick buf_lines scope='current'<CR>", desc = 'Fuzzily search in current buffer' },
+      { 'gd',               ":Pick lsp scope='definition'<CR>",       'Goto definition' },
+      { 'gr',               ":Pick lsp scope='references'<CR>",       'Goto references' },
+      { 'gI',               ":Pick lsp scope='implementation'<CR>",   'Goto implementation' },
+      { '<leader>gt',       ":Pick lsp scope='type_definition' <CR>", 'Goto type definition' },
+      { '<leader>sh',       ':Pick help<CR>',                         desc = 'Search Help' },
+      { '<leader>sf',       ":Pick files tool='rg'<CR>",              desc = 'Search Files' },
+      { '<leader>sg',       ':Pick grep_live<CR>',                    desc = 'Search by Grep' },
+      { '<leader>sr',       ':Pick resume<CR>',                       desc = 'Resume previous picker' },
+      { '<leader><leader>', ':Pick buffers<CR>',                      desc = 'Find existing buffers' },
+      { '<leader>/',        ":Pick buf_lines scope='current'<CR>",    desc = 'Fuzzily search in current buffer' },
     },
     config = function()
       local minipick = require 'mini.pick'
