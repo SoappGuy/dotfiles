@@ -143,6 +143,59 @@ local M = {
         },
       }
     end,
+  },
+  {
+    'echasnovski/mini.statusline',
+    config = function()
+      require('mini.statusline').setup {
+        content = {
+          active =
+              function()
+                local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 300 })
+                local git           = MiniStatusline.section_git({ trunc_width = 40 })
+                local diff          = MiniStatusline.section_diff({ trunc_width = 75, icon = " :" })
+
+                local lsp           = 'No Active LSP'
+                local clients       = vim.lsp.get_clients()
+                if next(clients) ~= nil then
+                  for _, client in ipairs(clients) do
+                    local filetypes = client.config.filetypes ---@diagnostic disable-line: undefined-field
+                    if filetypes and vim.fn.index(filetypes, vim.api.nvim_get_option_value('filetype', { buf = 0 })) ~= -1 then
+                      lsp = ' LSP: ' .. client.name
+                    end
+                  end
+                end
+
+                local diagnostics = MiniStatusline.section_diagnostics({
+                  trunc_width = 75,
+                  icon = "",
+                  signs = {
+                    ERROR = '%#DiagnosticError#' .. ' ',
+                    WARN = '%#DiagnosticWarn#' .. ' ',
+                    INFO = '%#DiagnosticInfo#' .. '',
+                    HINT = '%#DiagnosticHint#' .. ' ',
+                  }
+                })
+
+                local filename    = MiniStatusline.section_filename({ trunc_width = 300 })
+                local fileinfo    = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+                local location    = MiniStatusline.section_location({ trunc_width = 300 })
+                local search      = MiniStatusline.section_searchcount({ trunc_width = 75 })
+
+                return MiniStatusline.combine_groups({
+                  { hl = mode_hl,                  strings = { mode } },
+                  { hl = 'MiniStatuslineFilename', strings = { filename } },
+                  { hl = 'MiniStatuslineDevinfo',  strings = { git, lsp, diagnostics } },
+                  '%=',
+                  { hl = 'MiniStatuslineDevinfo',  strings = { diff } },
+                  { hl = 'MiniStatuslineFilename', strings = { fileinfo } },
+                  { hl = mode_hl,                  strings = { search, location } },
+                })
+              end
+          ,
+        }
+      }
+    end,
   }
 }
 
