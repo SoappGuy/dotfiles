@@ -6,7 +6,7 @@ return {
     lint.linters_by_ft = {
       json = { 'jsonlint' },
       -- text = { 'vale' },
-      c = { 'cpplint' },
+      -- c = { 'cpplint' },
       -- python = { 'ruff' },
     }
 

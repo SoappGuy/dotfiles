@@ -1,5 +1,20 @@
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set(
+  'n',
+  '<leader>e',
+  function()
+    vim.diagnostic.config({ virtual_lines = { current_line = true }, virtual_text = false })
+
+    vim.api.nvim_create_autocmd('CursorMoved', {
+      group = vim.api.nvim_create_augroup('line-diagnostics', { clear = true }),
+      callback = function()
+        vim.diagnostic.config({ virtual_lines = false, virtual_text = true })
+        return true
+      end,
+    })
+  end,
+  { desc = 'Show diagnostic [E]rror messages' }
+)
 vim.keymap.set('n', '<Leader>q', function()
   vim.diagnostic.setloclist { open = false }
   local winid = vim.fn.getloclist(0, { winid = 0 }).winid

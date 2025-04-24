@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/way-edges/way-edges/master/config/config.schema.json",
+  "ensure_load_group": [
+    "common"
+  ],
+  "groups": [
+    {
+      "name": "niri",
+      "widgets": [
+        {
+          "edge": "left",
+          "position": "bottom",
+          "layer": "overlay",
+          "monitor": "HDMI-A-1",
+          "widget": {
+            "type": "workspace",
+            "thickness": 30,
+            "length": "100%",
+            "hover_color": "#ffffff22",
+            "active_increase": 0.2,
+            /// "active_color": "#fff",
+            "focus_color": "#ed8e86",
+            "default_color": "#000",
+            "preset": "niri"
+          }
+        }
+      ]
+    },
+    {
+      "name": "common",
+      "widgets": [
+        {
+          "monitor": "eDP-1",
+          "edge": "top",
+          "position": "top",
+          "layer": "overlay",
+          "preview_size": 7,
+          "ignore_exclusive": true,
+          "widget": {
+            "type": "slider",
+            "thickness": 30,
+            "border_width": 4,
+            "length": "12.5%",
+            "redraw_only_on_internal_update": false,
+            "preset": {
+              "type": "speaker"
+            }
+          }
+        },
+        {
+          "name": "mic",
+          "monitor": "eDP-1",
+          "edge": "top",
+          "position": "top",
+          "layer": "overlay",
+          "margins": {
+            "left": "12.5%"
+          },
+          "preview_size": 7,
+          "ignore_exclusive": true,
+          "widget": {
+            "type": "slider",
+            "thickness": 30,
+            "border_width": 4,
+            "length": "12.5%",
+            "fg_color": "#BD93F9",
+            "redraw_only_on_internal_update": false,
+            "preset": {
+              "type": "microphone"
+            }
+          }
+        },
+        {
+          "name": "backlight",
+          "monitor": "eDP-1",
+          "edge": "top",
+          "position": "top",
+          "layer": "overlay",
+          "margins": {
+            "left": "25%"
+          },
+          "preview_size": 7,
+          "ignore_exclusive": true,
+          "widget": {
+            "type": "slider",
+            "thickness": 30,
+            "border_width": 4,
+            "length": "12.5%",
+            "fg_color": "#FFFFFF",
+            "bg_color": "#000000",
+            "redraw_only_on_internal_update": false,
+            "preset": {
+              "type": "backlight"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,22 @@
-[plugin]
-deps = [{ use = "yazi-rs/plugins#full-border", commit = "a882e38" }]
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "a1738e8"
+hash = "e0ada736ea676c2bbb3ec705a49526ef"
+
+[[plugin.deps]]
+use = "Sonico98/allmytoes"
+rev = "1e43bfd"
+hash = "8f9bfa292af429a27b81d424085ede67"
+
+[[plugin.deps]]
+use = "Sonico98/exifaudio"
+rev = "7ff7141"
+hash = "666ccba55119fba4c25b8ad354b2855c"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "73b7842"
+hash = "1b2f25c9a34b98e596c65bd3e84c51ef"
 
 [flavor]
 deps = []

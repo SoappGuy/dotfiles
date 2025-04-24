@@ -111,6 +111,10 @@ function say
     cowsay $argv
 end
 
+function dumpbin
+    wine /opt/dumpbin/dumpbin.exe $argv
+end
+
 function init_c_winapi
     echo "Writing .clangd file for Windows API development..."
 

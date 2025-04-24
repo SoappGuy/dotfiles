@@ -11,20 +11,7 @@ local M = {
     cmd = 'Oil',
     lazy = false,
     keys = {
-      {
-        '\\',
-        function()
-          local oil = require 'oil'
-
-          if vim.w.is_oil_win then
-            oil.close()
-          else
-            oil.open_float(nil, { preview = {} })
-          end
-        end,
-
-        { desc = 'Oil toggle' },
-      },
+      { '\\', function() require('oil').toggle_float() end, { desc = 'Oil toggle' } },
     },
 
     --- @module 'oil'
@@ -54,6 +41,9 @@ local M = {
         { 'size',  highlight = 'Special' },
         { 'mtime', highlight = 'Number' },
         { 'icon' },
+      },
+      win_options = {
+        signcolumn = "yes:2",
       },
       float = {
         padding = 4,
@@ -85,12 +75,44 @@ local M = {
   },
   {
     "JezerM/oil-lsp-diagnostics.nvim",
-    dependencies = {
-      'stevearc/oil.nvim',
-    },
+    dependencies = { 'stevearc/oil.nvim' },
     event = 'BufReadPre',
     opts = {}
-  }
+  },
+  {
+    "refractalize/oil-git-status.nvim",
+    dependencies = { "stevearc/oil.nvim" },
+    event = 'BufReadPre',
+    opts = {
+      show_ignored = true, -- show files that match gitignore with !!
+      symbols = {          -- customize the symbols that appear in the git status columns
+        index = {
+          ["!"] = "",
+          ["?"] = "",
+          ["A"] = "",
+          ["C"] = "",
+          ["D"] = "",
+          ["M"] = "",
+          ["R"] = "",
+          ["T"] = "T",
+          ["U"] = "",
+          [" "] = " ",
+        },
+        working_tree = {
+          ["!"] = "",
+          ["?"] = "",
+          ["A"] = "",
+          ["C"] = "",
+          ["D"] = "",
+          ["M"] = "",
+          ["R"] = "",
+          ["T"] = "T",
+          ["U"] = "",
+          [" "] = " ",
+        },
+      },
+    }
+  },
 }
 
 return M

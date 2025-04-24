@@ -14,10 +14,7 @@ return {
   opts = {
     ensure_installed = { 'bash', 'c', 'rust', 'python', 'diff', 'html', 'css', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
     auto_install = true,
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = { 'ruby' },
-    },
+    highlight = { enable = true, additional_vim_regex_highlighting = { 'ruby' } },
     indent = { enable = true, disable = { 'ruby' } },
     incremental_selection = {
       enable = true,
@@ -28,38 +25,6 @@ return {
     },
 
     textobjects = {
-      move = {
-        enable = true,
-        set_jumps = true, -- whether to set jumps in the jumplist
-        goto_next_start = {
-          [']m'] = { query = '@function.outer', desc = 'function start' },
-          ['gj'] = { query = '@function.outer', desc = 'function start' },
-          [']]'] = { query = '@class.outer', desc = 'class start' },
-          [']b'] = { query = '@block.outer', desc = 'block start' },
-          [']a'] = { query = '@parameter.inner', desc = 'parameter start' },
-        },
-        goto_next_end = {
-          [']M'] = { query = '@function.outer', desc = 'function end' },
-          ['gJ'] = { query = '@function.outer', desc = 'function end' },
-          [']['] = { query = '@class.outer', desc = 'class end' },
-          [']B'] = { query = '@block.outer', desc = 'block end' },
-          [']A'] = { query = '@parameter.inner', desc = 'parameter end' },
-        },
-        goto_previous_start = {
-          ['[m'] = { query = '@function.outer', desc = 'previous function start' },
-          ['gk'] = { query = '@function.outer', desc = 'previous function start' },
-          ['[['] = { query = '@class.outer', desc = 'previous class start' },
-          ['[b'] = { query = '@block.outer', desc = 'previous block start' },
-          ['[a'] = { query = '@parameter.inner', desc = 'previous parameter start' },
-        },
-        goto_previous_end = {
-          ['[M'] = { query = '@function.outer', desc = 'previous function end' },
-          ['gK'] = { query = '@function.outer', desc = 'previous function end' },
-          ['[]'] = { query = '@class.outer', desc = 'previous class end' },
-          ['[B'] = { query = '@block.outer', desc = 'previous block end' },
-          ['[A'] = { query = '@parameter.inner', desc = 'previous parameter end' },
-        },
-      },
       select = {
         enable = true,
         lookahead = true,
@@ -73,7 +38,7 @@ return {
           ['al'] = { query = '@loop.outer', desc = 'outer loop' },
           ['il'] = { query = '@loop.inner', desc = 'inner loop' },
           ['a/'] = { query = '@comment.outer', desc = 'outer comment' },
-          ['i/'] = { query = '@comment.outer', desc = 'outer comment' }, -- no inner for comment
+          ['i/'] = { query = '@comment.outer', desc = 'outer comment' },
           ['aa'] = { query = '@parameter.outer', desc = 'outer parameter' },
           ['ia'] = { query = '@parameter.inner', desc = 'inner parameter' },
         },

@@ -1,0 +1,229 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "spacing": 4, // Gaps between modules (4px)
+    "output": [
+        "HDMI-A-1",
+        "HDMI-A-2"
+    ],
+    // modules
+    "modules-left": [
+        "hyprland/window",
+        "mpris"
+    ],
+    "modules-right": [
+        "pulseaudio#output",
+        "pulseaudio#input",
+        "backlight",
+        "hyprland/language",
+        "memory",
+        "battery",
+        "custom/notifications",
+        "clock"
+    ],
+    // hyprland
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "disable-scroll": true,
+        "all-outputs": true
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "separate-outputs": true,
+        "max-length": 40,
+        "icon": true,
+        "icon-size": 30,
+        "rewrite": {
+            "(.*)Mozilla Firefox": "Mozzarella Firefox" // ShyFox fucked up
+        }
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-uk": "Ua",
+        "format-en": "En",
+        "on-click": "hyprctl switchxkblayout 'ite-tech.-inc.-ite-device(8910)-keyboard' next && hyprctl switchxkblayout 'keychron-k6-rgb-keyboard' next",
+        "max-length": 5
+    },
+    // default
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 0
+    },
+    "clock": {
+        "format": "{:%b %d - %H:%M:%S}",
+        "interval": 1,
+        "tooltip-format": "<tt><big>{calendar}</big></tt>",
+        "calendar": {
+            "mode": "month",
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "backlight": {
+        "tooltip": false,
+        "format": "{percent}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "battery": {
+        "format": "{capacity}% {icon} {power:.1f} wt",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% ",
+        "states": {
+            "good": 100,
+            "warning": 40,
+            "critical": 15
+        },
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "interval": 1
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󱙱",
+            "deactivated": "󰌾"
+        }
+    },
+    "mpris": {
+        "interval": 0.5,
+        "format": "{status_icon} 󰽴 {dynamic}",
+        "status-icons": {
+            "paused": "⏸ >"
+        },
+        "dynamic-order": [
+            "title"
+        ],
+        "max-length": 25
+    },
+    "pulseaudio#output": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} 󰂯 {volume}%",
+        "format-muted": "{icon}",
+        "format-icons": {
+            "default": "󰕾",
+            "default-muted": "󰖁",
+            "headphone": "󰋋",
+            "headphone-muterd": "󰟎",
+            "speaker": "󰓃",
+            "speaker-muted": "󰓄",
+            "hdmi": "󰡁",
+            "headset": "󰋎",
+            "headset-muted": "󰋐",
+            "hands-free": "",
+            "hands-free-muted": "",
+            "phone": "",
+            "phone-muted": ""
+        },
+        "scroll-step": 5.0,
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
+        "smooth-scrolling-threshold": 1
+    },
+    "pulseaudio#input": {
+        "format": "{format_source}",
+        "format-source": " {volume} %",
+        "format-source-muted": "",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 1%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-"
+    },
+    // custom complicated
+    "custom/notifications": {
+        "tooltip": false,
+        "format": "{} {icon}",
+        "format-icons": {
+            "notification": "",
+            "none": "",
+            "dnd-notification": "",
+            "dnd-none": "",
+            "inhibited-notification": "",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/screenrec": {
+        "tooltip": false,
+        "format": "{}{icon}",
+        "format-icons": {
+            "in_progres": "",
+            "none": ""
+        },
+        "return-type": "json",
+        "exec": "~/.scripts/screenrec.sh status",
+        "on-click": "~/.scripts/screenrec.sh togglea",
+        "on-click-right": "~/.scripts/screenrec.sh toggle",
+        // to see all possible outputs use "pactl list sources | grep Name"
+        "interval": 1
+    },
+    // custom simple
+    "custom/xdp": {
+        "format": "󱄋",
+        "on-click": "~/dotfiles/.config/hypr/execs/xdph.sh"
+    },
+    "custom/vnc": {
+        "format": "󰦉",
+        "on-click": "~/dotfiles/.scripts/vnc.sh toggle"
+    },
+    "custom/schedule": {
+        "return-type": "json",
+        "exec": "~/.scripts/schedule.sh",
+        "interval": 30,
+        "tooltip": true,
+        "format": "{}"
+    },
+    // groups
+    "custom/scripts_icon": {
+        "format": "󱜧"
+    },
+    "group/scripts": {
+        "modules": [
+            "custom/scripts_icon",
+            "idle_inhibitor",
+            "custom/xdp",
+            "custom/screenrec",
+            "custom/vnc"
+        ],
+        "orientation": "horizontal",
+        "drawer": {
+            "children-class": "script",
+            "transition-duration": 100,
+            "click-to-reveal": true
+        }
+    }
+}

@@ -12,13 +12,13 @@ local M = {
         callback = function(data)
           local summary = vim.b[data.buf].minidiff_summary
           local str = ""
-          if summary.add > 0 then
+          if summary.add ~= nil and summary.add > 0 then
             str = str .. '%#MiniDiffSignAdd# ' .. summary.add .. "%#MiniStatuslineDevinfo#"
           end
-          if summary.change > 0 then
+          if summary.change ~= nil and summary.change > 0 then
             str = str .. ' %#MiniDiffSignChange# ' .. summary.change .. "%#MiniStatuslineDevinfo#"
           end
-          if summary.delete > 0 then
+          if summary.delete ~= nil and summary.delete > 0 then
             str = str .. ' %#MiniDiffSignDelete# ' .. summary.delete .. "%#MiniStatuslineDevinfo#"
           end
           vim.b[data.buf].minidiff_summary_string = str
@@ -132,19 +132,19 @@ local M = {
   {
     'echasnovski/mini.pick',
     lazy = true,
-    dependencies = {
-      { 'echasnovski/mini.extra', opts = {} },
-    },
+    dependencies = { { 'echasnovski/mini.extra', opts = {} }, },
     keys = {
-      { 'gd',               ":Pick lsp scope='definition'<CR>",       'Goto definition' },
-      { 'gr',               ":Pick lsp scope='references'<CR>",       'Goto references' },
-      { 'gI',               ":Pick lsp scope='implementation'<CR>",   'Goto implementation' },
-      { '<leader>gt',       ":Pick lsp scope='type_definition' <CR>", 'Goto type definition' },
-      { '<leader>sh',       ':Pick help<CR>',                         desc = 'Search Help' },
+      { 'gD',               vim.lsp.buf.declaration,                  'Goto declaration' },
+      { '<leader>ca',       vim.lsp.buf.code_action,                  'Code action' },
+      { 'gd',               ":Pick lsp scope='definition'<CR>",       desc = 'Goto definition' },
+      { 'gr',               ":Pick lsp scope='references'<CR>",       desc = 'Goto references' },
+      { 'gI',               ":Pick lsp scope='implementation'<CR>",   desc = 'Goto implementation' },
+      { '<leader>gt',       ":Pick lsp scope='type_definition' <CR>", desc = 'Goto type definition' },
+      { '<leader>sh',       ":Pick help<CR>",                         desc = 'Search Help' },
       { '<leader>sf',       ":Pick files tool='rg'<CR>",              desc = 'Search Files' },
-      { '<leader>sg',       ':Pick grep_live<CR>',                    desc = 'Search by Grep' },
-      { '<leader>sr',       ':Pick resume<CR>',                       desc = 'Resume previous picker' },
-      { '<leader><leader>', ':Pick buffers<CR>',                      desc = 'Find existing buffers' },
+      { '<leader>sg',       ":Pick grep_live<CR>",                    desc = 'Search by Grep' },
+      { '<leader>sr',       ":Pick resume<CR>",                       desc = 'Resume previous picker' },
+      { '<leader><leader>', ":Pick buffers<CR>",                      desc = 'Find existing buffers' },
       { '<leader>/',        ":Pick buf_lines scope='current'<CR>",    desc = 'Fuzzily search in current buffer' },
     },
     config = function()

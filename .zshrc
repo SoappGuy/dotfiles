@@ -1,8 +1,8 @@
 # Auto start Hyprland on tty1
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  mkdir -p ~/.cache
-  exec Hyprland > ~/.cache/hyprland.log 2>&1
-fi
+# if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+#   mkdir -p ~/.cache
+#   exec Hyprland > ~/.cache/hyprland.log 2>&1
+# fi
 
 # Setup zinit plugin manager
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -101,6 +101,7 @@ alias s="kitten ssh"
 alias vi="nvim"
 alias vim="nvim"
 alias e="nvim"
+alias dumpbin="wine /opt/dumpbin"
 
 # functions
 drop() {

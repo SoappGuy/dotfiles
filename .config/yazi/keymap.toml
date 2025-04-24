@@ -1,5 +1,20 @@
 [manager]
 prepend_keymap = [
-{ on = [ "<C-n>" ], run = '''shell 'dragon-drop -x -i -T "$1"' --confirm''', desc = "Drag and drop" },
-{ on = [ "y" ], run = [ "yank", '''shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' ''' ], desc = "Copy files" }
+	{ on = [
+		"<C-n>",
+	], run = '''shell 'dragon-drop -x -i -T "$1"' --confirm''', desc = "Drag and drop" },
+	{ on = [
+		"y",
+	], run = [
+		"yank",
+		'''shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' ''',
+	], desc = "Copy files" },
+	{ on = [
+		"<C-space>",
+	], run = [
+		'shell -- sushi "$@"',
+	] },
+	{ on = [
+		"C",
+	], run = "plugin ouch", desc = "Compress with ouch" },
 ]

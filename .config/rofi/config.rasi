@@ -1,11 +1,20 @@
-/**
- * ROFI Color theme
- * User: Qball
- * Copyright: Dave Davenport
- */
 configuration {
 	modes: [ combi ];
 	combi-modes: [ drun ];
+
+	kb-custom-1: "";
+	kb-custom-2: "";
+	kb-custom-3: "";
+	kb-custom-4: "";
+	kb-custom-5: "";
+	kb-custom-6: "";
+
+	kb-select-1: "Alt+1";
+	kb-select-2: "Alt+2";
+	kb-select-3: "Alt+3";
+	kb-select-4: "Alt+4";
+	kb-select-5: "Alt+5";
+	kb-select-6: "Alt+6";
 }
 
 @theme "squared"

@@ -18,18 +18,17 @@ local M = {
       { 'williamboman/mason-lspconfig.nvim' },
       { 'saghen/blink.cmp' },
 
-      { 'mfussenegger/nvim-jdtls' },
+      { 'nvim-java/nvim-java' },
 
       { 'j-hui/fidget.nvim',                opts = {} },
     },
     config = function()
+      require('java').setup()
+
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(event)
           local maps = {
-            -- After changing these mappings don't forget to update the mini.pick keys for proper lazy-loading
-            { 'gD',         vim.lsp.buf.declaration,                                'Goto declaration' },
             { '<leader>cr', vim.lsp.buf.rename,                                     'Rename' },
-            { '<leader>ca', vim.lsp.buf.code_action,                                'Code action' },
             { 'K',          function() vim.lsp.buf.hover { border = 'single' } end, 'Hover documentation' },
           }
 
@@ -45,13 +44,20 @@ local M = {
       })
 
       local servers = {
+        taplo = {},
+        intelephense = {
+          root_dir = function(_, bufnr)
+            return vim.fs.root(bufnr, { '.git' }) or vim.fn.expand '%:p:h'
+          end,
+        },
+        jsonls = {},
         jdtls = {},
         gopls = {},
         clangd = {},
         tinymist = {
           settings = {
             formatterMode = 'typstyle',
-            -- exportPdf = 'onType',
+            exportPdf = 'onType',
             outputPath = '$root/$dir/$name',
           },
           single_file_support = true,
@@ -95,6 +101,7 @@ local M = {
         },
         emmet_language_server = {},
         hyprls = {},
+        rust_analyzer = {},
       }
 
       require('mason').setup({
@@ -117,6 +124,7 @@ local M = {
           end,
 
           rust_analyzer = function() end,
+          -- jdtls = function() end,
         },
       }
     end,
