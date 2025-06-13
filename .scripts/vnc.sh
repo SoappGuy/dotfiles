@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-NETWORK_ADAPTER="wlp4s0"
+# NETWORK_ADAPTER="wlp4s0"
+NETWORK_ADAPTER="wlp61s0"
 PORT="5900"
 
 get_local_ip() {

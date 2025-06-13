@@ -1,0 +1,110 @@
+@define-color base00 #1d2021;
+@define-color base01 #383c3e;
+@define-color base02 #53585b;
+@define-color base03 #6f7579;
+@define-color base04 #cdcdcd;
+@define-color base05 #d5d5d5;
+@define-color base06 #dddddd;
+@define-color base07 #e5e5e5;
+@define-color base08 #d72638;
+@define-color base09 #eb8413;
+@define-color base0A #f19d1a;
+@define-color base0B #88b92d;
+@define-color base0C #1ba595;
+@define-color base0D #1e8bac;
+@define-color base0E #be4264;
+@define-color base0F #c85e0d;
+
+#window,
+#box,
+#search,
+#password,
+#input,
+#typeahead,
+#spinner,
+#list,
+child,
+scrollbar,
+slider,
+#item,
+#text,
+#label,
+#sub,
+#activationlabel {
+  all: unset;
+}
+
+#window {
+  background: none;
+  color: @base05;
+}
+
+#box {
+  border-radius: 20px;
+  border-width: 4px;
+  border-color: @base0D;
+  background: @base01;
+}
+
+#search {
+  background: @base02;
+  border-radius: 12px 12px 6px 6px;
+  padding: 8px;
+}
+
+#password,
+#input,
+#typeahead {
+  background: none;
+  box-shadow: none;
+  border-radius: 12px;
+}
+
+#input > *:first-child,
+#typeahead > *:first-child {
+  margin-right: 12px;
+  border-radius: 0px;
+}
+
+#typeahead {
+  color: @base05;
+}
+
+#input placeholder {
+  opacity: 0.5;
+}
+
+#list {
+  padding: 8px;
+  border-radius: 6px 6px 12px 12px;
+  background: @base02;
+}
+
+child {
+  box-shadow: none;
+}
+
+child:selected,
+child:hover {
+  box-shadow: none;
+  border-radius: 8px;
+  background: @base03;
+}
+
+#item {
+  padding: 4px;
+}
+
+#sub {
+  font-size: smaller;
+  opacity: 0.5;
+}
+
+#activationlabel {
+  opacity: 0.5;
+}
+
+.activation #activationlabel {
+  opacity: 1;
+  color: @base05;
+}

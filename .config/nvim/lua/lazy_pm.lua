@@ -7,6 +7,18 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup(
   {
+    -- {
+    --   "OXY2DEV/markview.nvim",
+    --   lazy = false,
+    --   dependencies = { "saghen/blink.cmp" },
+    --   opts = { typst = { enable = false } }
+    -- },
+    -- {
+    --   'm4xshen/hardtime.nvim',
+    --   lazy = false,
+    --   dependencies = { 'MunifTanjim/nui.nvim' },
+    --   opts = {}
+    -- },
     {
       'scottmckendry/cyberdream.nvim',
       lazy = false,
@@ -15,6 +27,16 @@ require('lazy').setup(
       init = function()
         vim.cmd 'colorscheme cyberdream'
       end,
+    },
+    {
+      'folke/lazydev.nvim',
+      ft = 'lua',
+      opts = {
+        library = {
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          { path = "LazyVim",            words = { "LazyVim" } },
+        }
+      }
     },
     {
       'michaelrommel/nvim-silicon',
@@ -30,13 +52,38 @@ require('lazy').setup(
       },
     },
     {
-      'chrisgrier/nvim-spider',
-      keys = {
-        { '<S-e>', "<cmd>lua require('spider').motion('e')<CR>", mode = { 'n', 'o', 'x' } },
-        { '<S-w>', "<cmd>lua require('spider').motion('w')<CR>", mode = { 'n', 'o', 'x' } },
-        { '<S-b>', "<cmd>lua require('spider').motion('b')<CR>", mode = { 'n', 'o', 'x' } },
+      "Aietes/esp32.nvim",
+      opts = {
+        build_dir = "build",
       },
     },
+    -- {
+    --   'chrisgrier/nvim-spider',
+    --   keys = {
+    --     { '<S-e>', "<cmd>lua require('spider').motion('e')<CR>", mode = { 'n', 'o', 'x' } },
+    --     { '<S-w>', "<cmd>lua require('spider').motion('w')<CR>", mode = { 'n', 'o', 'x' } },
+    --     { '<S-b>', "<cmd>lua require('spider').motion('b')<CR>", mode = { 'n', 'o', 'x' } },
+    --   },
+    -- },
+    {
+      'https://github.com/aklt/plantuml-syntax',
+      ft = { 'pu', 'plantuml', 'iuml', 'puml', 'wsd' },
+      cmd = 'PlantUML',
+      dependencies = {
+        {
+          'https://gitlab.com/itaranto/plantuml.nvim',
+          opts = { renderer = { type = 'image', options = { prog = 'loupe', dark_mode = false, format = 'png' } } }
+        },
+      }
+    },
+
+    {
+      'saecki/crates.nvim',
+      tag = 'stable',
+      event = { 'BufRead Cargo.toml' },
+      opts = { lsp = { enabled = true, actions = true, completion = true, hover = true } }
+    },
+
     { 'sphamba/smear-cursor.nvim',     event = "VimEnter" },
     { 'rhysd/clever-f.vim',            keys = { 'f', 'F', 't', 'T' } },
     { 'windwp/nvim-autopairs',         event = "InsertEnter",                                              opts = {} }, -- Autopairs

@@ -7,7 +7,7 @@ vim.g.have_nerd_font = true
 vim.opt.termguicolors = true
 
 vim.opt.number = true
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
@@ -74,12 +74,12 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:⏵]]
 vim.o.fillchars = [[eob: ,fold: ,foldopen:󰄼,foldsep: ,foldclose:󰄾]]
 vim.o.foldcolumn = '1' -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
 -- vim.opt.fileencoding = 'cp1251'
-vim.opt.fileencodings = 'utf-8,cp1251,cp866,latin1'
+vim.opt.fileencodings = 'ucs-bom,utf-8,cp1251,latin1'
 
 vim.opt.spell = true
 vim.opt.spelllang = { 'en_us', 'uk' }
@@ -97,5 +97,7 @@ vim.filetype.add {
 
 vim.diagnostic.config {
   -- virtual_lines = { current_line = true },
-  virtual_text = { virt_text_pos = "eol", virt_text_win_col = 100 }
+  -- virtual_text = { virt_text_pos = "eol", virt_text_win_col = 100 }
 }
+
+vim.o.winborder = 'single'

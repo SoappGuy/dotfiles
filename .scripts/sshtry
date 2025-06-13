@@ -1,0 +1,24 @@
+#!/bin/env bash
+
+HOST="$1"
+INTERVAL=30
+
+export GPG_TTY=$(tty)
+gpg-connect-agent --quiet updatestartuptty /bye >/dev/null
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+ATTEMPT=1
+
+while true; do
+    echo "Attempt $ATTEMPT"
+
+    if ssh -o ConnectTimeout=5 -o BatchMode=yes $HOST exit; then
+        notify-send -u critical -i network-transmit-receive "Connected to $HOST"
+        kitten ssh $HOST
+        break
+    fi
+
+    echo "Failed"
+    ATTEMPT=$((ATTEMPT+1))
+    sleep $INTERVAL
+done

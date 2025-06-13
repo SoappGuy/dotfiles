@@ -1,0 +1,17 @@
+#!/usr/bin/env fish
+
+for file_path in **
+    if file $file_path | grep -q "text"
+        set file_name (basename $file_path)
+
+        echo "== Файл $file_name"
+        echo
+        # echo "GitHub репозиторій: $github_url/$file_path"
+        # echo '#v(spacing)'
+        echo "```"
+        cat $file_path
+        echo "```"
+        echo
+    end
+end
+

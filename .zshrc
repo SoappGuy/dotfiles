@@ -1,8 +1,8 @@
 # Auto start Hyprland on tty1
-# if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-#   mkdir -p ~/.cache
-#   exec Hyprland > ~/.cache/hyprland.log 2>&1
-# fi
+if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+  mkdir -p ~/.cache
+  exec Hyprland > ~/.cache/hyprland.log 2>&1
+fi
 
 # Setup zinit plugin manager
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -124,6 +124,8 @@ export FZF_CTRL_T_OPTS="--preview 'eza --icons=always --tree --color=always {} |
 export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
 
 # gpg agent
-export GPG_TTY=$(tty)
-gpg-connect-agent --quiet updatestartuptty /bye >/dev/null
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+# export GPG_TTY=$(tty)
+# gpg-connect-agent --quiet updatestartuptty /bye >/dev/null
+# export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+export SSH_AUTH_SOCK=~/.bitwarden-ssh-agent.sock

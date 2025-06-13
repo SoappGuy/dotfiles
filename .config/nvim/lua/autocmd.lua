@@ -50,3 +50,8 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  callback = function() vim.o.bomb = (vim.o.fileencoding == "utf-16" or vim.o.fileencoding == "utf-16le") end
+})

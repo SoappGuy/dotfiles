@@ -150,6 +150,10 @@ clean:
     echo "Done!"
 end
 
+function export-esp-idf
+    . /home/dumbnerd/stuff/projects/_probe/esp/esp-idf/export.fish
+end
+
 ### Shell Integrations
 
 # Starship prompt initialization for Fish
@@ -172,6 +176,8 @@ set -x FZF_ALT_C_OPTS "--preview 'eza --icons=always --tree --color=always {} | 
 
 
 ### gpg Agent Setup
-set -x GPG_TTY (tty)
-gpg-connect-agent --quiet updatestartuptty /bye > /dev/null
-set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+# set -x GPG_TTY (tty)
+# gpg-connect-agent --quiet updatestartuptty /bye > /dev/null
+# set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+
+set -x SSH_AUTH_SOCK ~/.bitwarden-ssh-agent.sock

@@ -1,0 +1,137 @@
+as_window = false
+disable_click_to_close = false
+force_keyboard_focus = true
+theme = "nixos"
+disabled = [
+    "clipboard",
+    "translation",
+    "custom_commands",
+    "bookmarks",
+    "runner",
+    "windows",
+]
+
+[activation_mode]
+labels = "1234qwer"
+
+[keys]
+next = ["ctrl j", "down"]
+prev = ["ctrl k", "up"]
+close = ["ctrl q", "esc"]
+
+[builtins.switcher]
+name = "switcher"
+placeholder = "Switcher"
+prefix = "/"
+weight = 5
+blacklist = [{ regexp = "Avahi" }]
+
+[builtins.applications]
+name = "applications"
+placeholder = "Applications"
+weight = 10
+context_aware = true
+prioritize_new = true
+refresh = true
+show_generic = true
+show_icon_when_single = true
+show_sub_when_single = true
+blacklist = [{ regexp = "Avahi" }]
+[builtins.applications.actions]
+enabled = false
+
+[builtins.calc]
+icon = "accessories-calculator"
+min_chars = 2
+name = "calc"
+placeholder = "Calculator"
+weight = 5
+
+[builtins.clipboard]
+name = "clipboard"
+placeholder = "Clipboard"
+weight = 5
+image_height = 300
+max_entries = 10
+switcher_only = true
+
+[builtins.commands]
+name = "commands"
+placeholder = "Commands"
+weight = 8
+switcher_only = true
+icon = "utilities-terminal"
+
+[builtins.custom_commands]
+name = "custom_commands"
+placeholder = "Custom Commands"
+weight = 5
+icon = "utilities-terminal"
+
+[builtins.dmenu]
+name = "dmenu"
+placeholder = "Dmenu"
+weight = 5
+switcher_only = true
+
+[builtins.emojis]
+name = "emojis"
+placeholder = "Emojis"
+weight = 5
+switcher_only = true
+history = true
+typeahead = true
+
+[builtins.finder]
+name = "finder"
+placeholder = "Finder"
+weight = 5
+switcher_only = true
+icon = "folder"
+concurrency = 8
+ignore_gitignore = true
+refresh = true
+
+[builtins.runner]
+name = "runner"
+placeholder = "Runner"
+weight = 5
+icon = "utilities-terminal"
+generic_entry = false
+history = true
+refresh = true
+typeahead = true
+
+[builtins.ssh]
+name = "ssh"
+placeholder = "SSH"
+weight = 5
+switcher_only = false
+icon = "preferences-system-network"
+history = true
+refresh = true
+
+[builtins.websearch]
+name = "websearch"
+placeholder = "Websearch"
+weight = 5
+icon = "applications-internet"
+engines = ["duckduckgo"]
+
+[builtins.windows]
+name = "windows"
+placeholder = "Windows"
+weight = 10
+icon = "view-restore"
+
+[list]
+max_entries = 50
+show_initial_entries = true
+single_click = true
+
+[search]
+delay = 0
+force_keyboard_focus = true
+history = true
+placeholder = "Search..."
+blacklist = [{ regexp = "Avahi" }]

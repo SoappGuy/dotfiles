@@ -1,0 +1,47 @@
+[ui.anchors]
+bottom = false
+left = false
+right = false
+top = false
+
+[ui.window]
+h_align = "center"
+v_align = "center"
+[ui.window.box]
+h_align = "center"
+orientation = "vertical"
+v_align = "center"
+width = 450
+
+[ui.window.box.scroll]
+overlay_scrolling = true
+[ui.window.box.scroll.list.item]
+spacing = 4
+[ui.window.box.scroll.list.item.activation_label]
+width = 32
+x_align = 0.5
+y_align = 0.5
+
+[ui.window.box.scroll.list.item.icon]
+theme = "Papirus-Dark"
+
+[ui.window.box.scroll.list.item.text]
+h_align = "start"
+h_expand = true
+revert = true
+wrap = true
+
+[ui.window.box.scroll.list.margins]
+bottom = 8
+end = 8
+start = 8
+top = 8
+
+[ui.window.box.search]
+h_align = "top"
+
+[ui.window.box.search.margins]
+bottom = 0
+end = 8
+start = 8
+top = 8

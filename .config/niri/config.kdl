@@ -61,7 +61,7 @@ input {
         natural-scroll
         accel-profile "flat"
         scroll-method "two-finger"
-        scroll-factor 0.3
+        scroll-factor 2
         tap-button-map "left-right-middle"
     }
 

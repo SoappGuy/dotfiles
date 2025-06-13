@@ -18,8 +18,8 @@ local M = {
       ['<C-p>'] = { 'select_prev', 'fallback' },
       ['<C-n>'] = { 'select_next', 'fallback' },
 
-      ['<S-k>'] = { 'scroll_documentation_up', 'fallback' },
-      ['<S-j>'] = { 'scroll_documentation_down', 'fallback' },
+      ['<S-A-k>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<S-A-j>'] = { 'scroll_documentation_down', 'fallback' },
 
       ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
       ['<C-e>'] = { 'hide', 'fallback' },
@@ -36,11 +36,12 @@ local M = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
 
       providers = {
+        lsp = { score_offset = 100 },
         snippets = {
           name = 'snippets',
           enabled = true,
           max_items = 15,
-          min_keyword_length = 2,
+          min_keyword_length = 3,
           module = 'blink.cmp.sources.snippets',
           score_offset = 85,
         },

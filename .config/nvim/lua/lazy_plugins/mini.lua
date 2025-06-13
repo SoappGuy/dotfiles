@@ -10,7 +10,7 @@ local M = {
       vim.api.nvim_create_autocmd('User', {
         pattern = 'MiniDiffUpdated',
         callback = function(data)
-          local summary = vim.b[data.buf].minidiff_summary
+          local summary = vim.b[data.buf].minidiff_summary or {}
           local str = ""
           if summary.add ~= nil and summary.add > 0 then
             str = str .. '%#MiniDiffSignAdd# ' .. summary.add .. "%#MiniStatuslineDevinfo#"
@@ -146,6 +146,7 @@ local M = {
       { '<leader>sr',       ":Pick resume<CR>",                       desc = 'Resume previous picker' },
       { '<leader><leader>', ":Pick buffers<CR>",                      desc = 'Find existing buffers' },
       { '<leader>/',        ":Pick buf_lines scope='current'<CR>",    desc = 'Fuzzily search in current buffer' },
+      { 'z=',               ":Pick spellsuggest<CR>",                 desc = 'Spell suggestions' },
     },
     config = function()
       local minipick = require 'mini.pick'
